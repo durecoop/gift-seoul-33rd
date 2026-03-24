@@ -3,56 +3,49 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>1주차 - 퇴계점 조합원 온라인 특별 증정 | 서울남부두레생협</title>
+<title>1차 선물(14주차) - 퇴계점 온라인 특별 증정 | 서울남부두레생협</title>
 <style>
   @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
   *{margin:0;padding:0;box-sizing:border-box}
   body{font-family:'Pretendard',-apple-system,sans-serif;background:#f8f5f0;display:flex;justify-content:center;min-height:100vh;-webkit-font-smoothing:antialiased}
   .wrap{width:100%;max-width:430px;margin:0 auto;background:#fff;min-height:100vh;overflow:hidden}
-
-  /* Hero */
   .hero{background:linear-gradient(160deg,#3e2723 0%,#5c3d2e 50%,#8b5e3c 100%);color:#fff;padding:48px 28px 36px;text-align:center;position:relative;overflow:hidden}
   .hero::before{content:'';position:absolute;top:-60px;right:-60px;width:200px;height:200px;background:rgba(255,255,255,0.05);border-radius:50%}
-  .hero::after{content:'';position:absolute;bottom:-40px;left:-40px;width:160px;height:160px;background:rgba(255,255,255,0.04);border-radius:50%}
-  .badge{display:inline-block;background:rgba(255,255,255,0.15);backdrop-filter:blur(6px);border:1px solid rgba(255,255,255,0.2);border-radius:30px;padding:6px 16px;font-size:11px;font-weight:600;letter-spacing:1.5px;margin-bottom:20px}
+  .badge{display:inline-block;background:rgba(255,255,255,0.15);border:1px solid rgba(255,255,255,0.2);border-radius:30px;padding:6px 16px;font-size:11px;font-weight:600;letter-spacing:1.5px;margin-bottom:20px}
   .week-chip{display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,0.2);border-radius:20px;padding:8px 18px;font-size:13px;font-weight:700;margin-bottom:12px}
   .hero-date{font-size:14px;opacity:0.75;margin-bottom:8px;font-weight:500}
   .hero h1{font-size:26px;font-weight:800;line-height:1.4;margin-bottom:8px}
-  .hero-sub{font-size:14px;opacity:0.8;line-height:1.5}
-
-  /* Letter */
+  .hero-sub{font-size:15px;opacity:0.8;line-height:1.6}
   .letter-section{padding:28px 24px;background:#faf7f2}
-  .letter-card{background:#fff;border-radius:20px;padding:28px 24px;box-shadow:0 2px 12px rgba(0,0,0,0.04);position:relative;border-top:4px solid #8b5e3c}
-  .letter-card p{font-size:15px;color:#444;line-height:1.8;word-break:keep-all}
+  .letter-card{background:#fff;border-radius:20px;padding:28px 24px;box-shadow:0 2px 12px rgba(0,0,0,0.04);border-top:4px solid #8b5e3c}
+  .letter-card p{font-size:16px;color:#444;line-height:1.85;word-break:keep-all}
   .letter-card .hl{color:#5c3d2e;font-weight:700}
   .letter-card .sign{margin-top:16px;text-align:right;font-size:13px;color:#8b5e3c;font-weight:600}
-
-  /* Products Grid */
-  .products-section{padding:28px 24px}
-  .products-title{font-size:14px;font-weight:700;color:#8b5e3c;letter-spacing:2px;text-align:center;margin-bottom:20px}
-  .product-grid{display:flex;flex-direction:column;gap:16px}
-  .product-item{display:flex;align-items:center;gap:16px;background:#faf7f2;border-radius:16px;padding:16px}
-  .product-item .p-img{width:72px;height:72px;border-radius:12px;overflow:hidden;flex-shrink:0;background:#f0ebe4;box-shadow:0 2px 8px rgba(0,0,0,0.06)}
-  .product-item .p-img img{width:100%;height:100%;object-fit:cover}
-  .product-item .p-info{flex:1}
-  .product-item .p-name{font-size:16px;font-weight:800;color:#3e2723;margin-bottom:2px}
-  .product-item .p-spec{font-size:12px;color:#999;font-weight:500}
-  .product-item .p-desc{font-size:13px;color:#666;margin-top:4px;line-height:1.4}
-  .product-item .p-emoji{font-size:28px;flex-shrink:0}
-
-  /* Condition Box */
+  .product-section{padding:32px 24px;text-align:center}
+  .product-img-wrap{width:100%;max-width:300px;margin:0 auto 24px;border-radius:20px;overflow:hidden;box-shadow:0 8px 32px rgba(0,0,0,0.08);background:#f5f5f5}
+  .product-img-wrap img{width:100%;height:auto;display:block}
+  .product-name{font-size:24px;font-weight:800;color:#4a3520;margin-bottom:8px}
+  .product-desc{font-size:15px;color:#777;line-height:1.7;margin-bottom:24px}
   .condition-box{background:linear-gradient(135deg,#faf3eb,#f5ebe0);border-radius:20px;padding:24px;margin:0 24px 24px;text-align:center;border:1px solid #e6d5c3}
-  .condition-label{font-size:12px;color:#8b5e3c;font-weight:700;letter-spacing:2px;margin-bottom:8px}
+  .condition-label{font-size:13px;color:#8b5e3c;font-weight:700;letter-spacing:2px;margin-bottom:8px}
   .condition-amount{font-size:32px;font-weight:800;color:#5c3d2e}
   .condition-amount span{font-size:16px;font-weight:600}
-  .condition-note{font-size:13px;color:#999;margin-top:8px;line-height:1.5}
-
-  /* CTA */
+  .condition-note{font-size:14px;color:#999;margin-top:8px;line-height:1.5}
+  .message-section{padding:0 24px 24px}
+  .message-card{background:#fafaf5;border-radius:20px;padding:28px 24px;border-left:4px solid #8b5e3c}
+  .message-card p{font-size:16px;color:#444;line-height:1.8;word-break:keep-all}
+  .message-card .highlight{color:#5c3d2e;font-weight:700}
+  .phone-section{padding:0 24px 24px}
+  .phone-card{background:#fff3e0;border-radius:20px;padding:24px;text-align:center;border:1px solid #ffe0b2}
+  .phone-card .ph-label{font-size:15px;color:#e65100;font-weight:600;margin-bottom:8px}
+  .phone-card .ph-num{font-size:28px;font-weight:900;color:#bf360c;margin-bottom:4px}
+  .phone-card .ph-sub{font-size:13px;color:#999}
   .cta-section{padding:0 24px 24px;text-align:center}
-  .cta-btn{display:block;background:#5c3d2e;color:#fff;font-size:17px;font-weight:800;padding:18px;border-radius:16px;text-decoration:none;box-shadow:0 4px 16px rgba(0,0,0,0.1);transition:transform 0.15s}
-  .cta-btn:active{transform:scale(0.97)}
-
-  /* Footer */
+  .cta-btn{display:block;background:#5c3d2e;color:#fff;font-size:17px;font-weight:800;padding:18px;border-radius:16px;text-decoration:none;box-shadow:0 4px 16px rgba(0,0,0,0.1)}
+  .next-section{padding:0 24px 24px}
+  .next-card{background:#f5f5f5;border-radius:16px;padding:20px;text-align:center}
+  .next-card .next-label{font-size:13px;color:#999;font-weight:600;margin-bottom:4px}
+  .next-card .next-item{font-size:16px;font-weight:700;color:#444}
   .footer{background:#f5f0eb;padding:28px 24px;text-align:center}
   .footer-logo{font-size:14px;font-weight:800;color:#5c3d2e;margin-bottom:6px}
   .footer-info{font-size:11px;color:#999;line-height:1.6}
@@ -63,92 +56,78 @@
 <div class="wrap">
   <div class="hero">
     <div class="badge">퇴계점 조합원님께 드리는 선물</div>
-    <div class="week-chip">🎁 WEEK 1 · 첫 번째 주</div>
-    <div class="hero-date">2026년 3월 31일(월) ~ 4월 4일(금)</div>
+    <div class="week-chip">🍄 1차 선물 · 14주차</div>
+    <div class="hero-date">2026년 3월 30일(월) ~ 4월 3일(금)</div>
     <h1>온라인에서 만나는<br>첫 번째 봄 선물</h1>
-    <p class="hero-sub">퇴계점에서 이어지는 두레의 마음,<br>이번 주부터 시작합니다</p>
+    <p class="hero-sub">퇴계점에서 장 보시던 그 마음 그대로,<br>이번 주부터 집 앞까지 찾아갑니다</p>
   </div>
 
   <div class="letter-section">
     <div class="letter-card">
       <p>
-        퇴계점을 이용해 주셨던<br>
+        퇴계점에서 장 보시던<br>
         <span class="hl">조합원님, 감사합니다.</span><br><br>
         매장 문은 닫혔지만,<br>
-        <span class="hl">생산자와 조합원을 잇는 두레의 끈</span>은<br>
-        그대로입니다.<br><br>
-        온라인에서의 첫 만남을 축하하며<br>
-        <span class="hl">5가지 봄 선물</span>을 준비했어요.
+        우리 가족 먹거리를 지켜온<br>
+        <span class="hl">두레의 마음은 그대로</span>입니다.<br><br>
+        온라인이 처음이셔도 괜찮아요.<br>
+        <span class="hl">첫 번째 선물</span>과 함께<br>
+        편하게 시작해 보세요.
       </p>
       <div class="sign">— 서울남부두레생협 임직원 일동</div>
     </div>
   </div>
 
-  <div class="products-section">
-    <div class="products-title">이번 주 증정 5품목</div>
-    <div class="product-grid">
-      <div class="product-item">
-        <div class="p-img"><img src="https://dureimg.ecoop.or.kr:9091/Delsys/DLOG/Goods/GoodsMaster/GoodsImage/50462C.png" alt="느타리버섯"></div>
-        <div class="p-info">
-          <div class="p-name">느타리버섯</div>
-          <div class="p-spec">200g · 무농약 인증</div>
-          <div class="p-desc">우리 땅에서 키운 봄 버섯</div>
-        </div>
-        <div class="p-emoji">🍄</div>
-      </div>
-      <div class="product-item">
-        <div class="p-img"><img src="https://dureimg.ecoop.or.kr:9091/Delsys/DLOG/Goods/GoodsMaster/GoodsImage/1325C.png" alt="당근"></div>
-        <div class="p-info">
-          <div class="p-name">당근</div>
-          <div class="p-spec">500g · 무농약 인증</div>
-          <div class="p-desc">생산자가 직접 키운 알찬 봄 당근</div>
-        </div>
-        <div class="p-emoji">🥕</div>
-      </div>
-      <div class="product-item">
-        <div class="p-img"><img src="https://dureimg.ecoop.or.kr:9091/Delsys/DLOG/Goods/GoodsMaster/GoodsImage/54286C.jpg" alt="쑥버무리"></div>
-        <div class="p-info">
-          <div class="p-name">쑥버무리</div>
-          <div class="p-spec">250g · 제철 간식</div>
-          <div class="p-desc">봄 향기 가득, 온 가족 간식</div>
-        </div>
-        <div class="p-emoji">🌿</div>
-      </div>
-      <div class="product-item">
-        <div class="p-img"><img src="https://dureimg.ecoop.or.kr:9091/Delsys/DLOG/Goods/GoodsMaster/GoodsImage/21492C.png" alt="원삼유정란"></div>
-        <div class="p-info">
-          <div class="p-name">원삼유정란</div>
-          <div class="p-spec">10구 · 동물복지 자연방사</div>
-          <div class="p-desc">건강한 닭이 낳은 건강한 알</div>
-        </div>
-        <div class="p-emoji">🥚</div>
-      </div>
-      <div class="product-item">
-        <div class="p-img"><img src="https://dureimg.ecoop.or.kr:9091/Delsys/DLOG/Goods/GoodsMaster/GoodsImage/54967C.jpg" alt="손질삼치"></div>
-        <div class="p-info">
-          <div class="p-name">냉장 손질삼치</div>
-          <div class="p-spec">300g · 손질 완료</div>
-          <div class="p-desc">주말 밥상을 풍성하게</div>
-        </div>
-        <div class="p-emoji">🐟</div>
-      </div>
+  <div class="product-section">
+    <div class="product-img-wrap">
+      <img src="https://dureimg.ecoop.or.kr:9091/Delsys/DLOG/Goods/GoodsMaster/GoodsImage/50462C.png" alt="느타리버섯 200g">
     </div>
+    <div class="product-name">🍄 느타리버섯 200g</div>
+    <p class="product-desc">무농약 인증 · 우리 땅에서 정성껏 키운<br>봄 향 가득한 신선 버섯으로<br>된장찌개 한 그릇 끓여보세요</p>
   </div>
 
   <div class="condition-box">
-    <div class="condition-label">1주차 증정 조건</div>
-    <div class="condition-amount">10<span>만원 이상 주문</span></div>
-    <p class="condition-note">배송일 기준 · 1인 주 1회 · 5품목 자동 동봉</p>
+    <div class="condition-label">1차 선물 증정 조건</div>
+    <div class="condition-amount">5<span>만원 이상 주문</span></div>
+    <p class="condition-note">14주차 배송분 기준 · 1인 1회 · 자동 동봉</p>
+  </div>
+
+  <div class="message-section">
+    <div class="message-card">
+      <p>
+        <span class="highlight">5만원 이상 주문</span>하시면<br>
+        느타리버섯이 배송 박스에<br>
+        자동으로 함께 들어갑니다.<br><br>
+        자녀분이 대신 주문해 주셔도<br>
+        선물은 똑같이 들어가요. 😊<br><br>
+        ※ 주문일이 아닌 <span class="highlight">배송일 기준</span>입니다
+      </p>
+    </div>
+  </div>
+
+  <div class="phone-section">
+    <div class="phone-card">
+      <div class="ph-label">온라인 주문이 어려우시면</div>
+      <div class="ph-num">📞 1661-5110</div>
+      <div class="ph-sub">두레생협 상담실에서 친절하게 도와드립니다</div>
+    </div>
   </div>
 
   <div class="cta-section">
-    <a href="https://www.ecoop.or.kr/DureShop/shopMain.do" class="cta-btn">온라인 장보기 →</a>
+    <a href="https://www.ecoop.or.kr/DureShop/shopMain.do" class="cta-btn">두레생협 쇼핑몰 바로가기 →</a>
+  </div>
+
+  <div class="next-section">
+    <div class="next-card">
+      <div class="next-label">다음 주 2차 선물 예고</div>
+      <div class="next-item">🥕 당근 500g · 15주차(4/6~4/10)</div>
+    </div>
   </div>
 
   <div class="footer">
     <div class="footer-logo">서울남부두레생협</div>
-    <p class="footer-info">생산자와 소비자가 서로 얼굴을 아는 관계<br>온라인사업팀</p>
-    <span class="footer-period">1주차 · 3/31(월) ~ 4/4(금)</span>
+    <p class="footer-info">우리 가족 밥상을 지키는 생협<br>상담실 📞 1661-5110</p>
+    <span class="footer-period">1차 선물 · 14주차 3/30~4/3</span>
   </div>
 </div>
 </body>
