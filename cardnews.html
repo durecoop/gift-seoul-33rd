@@ -3,842 +3,712 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>서울남부두레생협 33주년 감사 이벤트</title>
+<title>서울남부두레생협 33주년 감사 기획전</title>
 <style>
-  @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
-
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-
-  body {
-    font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, sans-serif;
-    background: #f5f0eb;
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    min-height: 100vh;
-    -webkit-font-smoothing: antialiased;
-  }
-
-  .card-wrapper {
-    width: 100%;
-    max-width: 430px;
-    margin: 0 auto;
-    overflow: hidden;
-  }
-
-  /* ── Swipe Container ── */
-  .swiper {
-    position: relative;
-    width: 100%;
-    overflow: hidden;
-    touch-action: pan-y;
-  }
-
-  .swiper-track {
-    display: flex;
-    transition: transform 0.35s cubic-bezier(.4,0,.2,1);
-    will-change: transform;
-  }
-
-  .card {
-    min-width: 100%;
-    flex-shrink: 0;
-    position: relative;
-  }
-
-  .card-inner {
-    aspect-ratio: 9 / 16;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 40px 28px;
-    position: relative;
-    overflow: hidden;
-  }
-
-  /* ── Pagination ── */
-  .pagination {
-    display: flex;
-    justify-content: center;
-    gap: 8px;
-    padding: 16px 0 24px;
-  }
-
-  .dot {
-    width: 8px; height: 8px;
-    border-radius: 50%;
-    background: #ccc;
-    transition: all 0.3s;
-    cursor: pointer;
-  }
-
-  .dot.active {
-    background: #2d6a4f;
-    width: 24px;
-    border-radius: 4px;
-  }
-
-  /* ── Page indicator ── */
-  .page-num {
-    position: absolute;
-    top: 20px;
-    right: 24px;
-    font-size: 13px;
-    font-weight: 600;
-    color: rgba(255,255,255,0.7);
-    z-index: 10;
-    letter-spacing: 1px;
-  }
-
-  /* ════════════════════════════════════
-     CARD 1 — Cover
-     ════════════════════════════════════ */
-  .card-cover .card-inner {
-    background: linear-gradient(160deg, #1b4332 0%, #2d6a4f 40%, #40916c 100%);
-    color: #fff;
-    text-align: center;
-  }
-
-  .card-cover .badge {
-    display: inline-block;
-    background: rgba(255,255,255,0.15);
-    backdrop-filter: blur(6px);
-    border: 1px solid rgba(255,255,255,0.25);
-    border-radius: 30px;
-    padding: 8px 20px;
-    font-size: 13px;
-    font-weight: 600;
-    letter-spacing: 1px;
-    margin-bottom: 28px;
-  }
-
-  .card-cover .anniversary {
-    font-size: 72px;
-    font-weight: 800;
-    line-height: 1;
-    margin-bottom: 4px;
-    background: linear-gradient(135deg, #fff 30%, #b7e4c7);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-  }
-
-  .card-cover .anniversary-sub {
-    font-size: 18px;
-    font-weight: 500;
-    opacity: 0.85;
-    margin-bottom: 32px;
-    letter-spacing: 2px;
-  }
-
-  .card-cover h1 {
-    font-size: 26px;
-    font-weight: 800;
-    line-height: 1.4;
-    margin-bottom: 16px;
-  }
-
-  .card-cover .period {
-    font-size: 15px;
-    font-weight: 500;
-    opacity: 0.8;
-    margin-bottom: 32px;
-  }
-
-  .card-cover .deco-leaf {
-    font-size: 48px;
-    margin-bottom: 20px;
-    filter: drop-shadow(0 4px 8px rgba(0,0,0,0.15));
-  }
-
-  .card-cover .cta-hint {
-    position: absolute;
-    bottom: 32px;
-    font-size: 12px;
-    opacity: 0.5;
-    letter-spacing: 2px;
-    animation: pulse 2s ease-in-out infinite;
-  }
-
-  @keyframes pulse {
-    0%, 100% { opacity: 0.3; }
-    50% { opacity: 0.7; }
-  }
-
-  /* ════════════════════════════════════
-     CARD 2 — Event Info
-     ════════════════════════════════════ */
-  .card-info .card-inner {
-    background: linear-gradient(180deg, #f8f4ef 0%, #fff 100%);
-    color: #1b1b1b;
-    text-align: center;
-    justify-content: flex-start;
-    padding-top: 56px;
-  }
-
-  .card-info .section-label {
-    font-size: 12px;
-    font-weight: 700;
-    color: #2d6a4f;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    margin-bottom: 16px;
-  }
-
-  .card-info h2 {
-    font-size: 24px;
-    font-weight: 800;
-    color: #1b4332;
-    margin-bottom: 32px;
-    line-height: 1.4;
-  }
-
-  .info-list {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-    margin-bottom: 32px;
-  }
-
-  .info-item {
-    background: #fff;
-    border-radius: 16px;
-    padding: 20px;
-    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
-    text-align: left;
-    display: flex;
-    align-items: center;
-    gap: 16px;
-  }
-
-  .info-icon {
-    width: 48px;
-    height: 48px;
-    border-radius: 14px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 22px;
-    flex-shrink: 0;
-  }
-
-  .info-icon.green { background: #d8f3dc; }
-  .info-icon.yellow { background: #fff3cd; }
-  .info-icon.blue { background: #d0e8ff; }
-
-  .info-item .label {
-    font-size: 11px;
-    color: #888;
-    font-weight: 600;
-    margin-bottom: 4px;
-    letter-spacing: 0.5px;
-  }
-
-  .info-item .value {
-    font-size: 15px;
-    font-weight: 700;
-    color: #1b4332;
-    line-height: 1.4;
-  }
-
-  .how-box {
-    width: 100%;
-    background: #2d6a4f;
-    border-radius: 20px;
-    padding: 24px;
-    color: #fff;
-    text-align: center;
-  }
-
-  .how-box .how-title {
-    font-size: 14px;
-    font-weight: 700;
-    margin-bottom: 12px;
-    opacity: 0.85;
-  }
-
-  .how-steps {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    font-size: 14px;
-    font-weight: 600;
-  }
-
-  .how-steps .step {
-    background: rgba(255,255,255,0.15);
-    border-radius: 12px;
-    padding: 10px 14px;
-    font-size: 13px;
-    line-height: 1.3;
-  }
-
-  .how-steps .arrow {
-    font-size: 16px;
-    opacity: 0.6;
-  }
-
-  /* ════════════════════════════════════
-     CARD 3~7 — Daily Gift Cards
-     ════════════════════════════════════ */
-  .card-day .card-inner {
-    justify-content: flex-start;
-    padding-top: 0;
-    padding-bottom: 0;
-    padding-left: 0;
-    padding-right: 0;
-  }
-
-  .day-header {
-    width: 100%;
-    padding: 48px 28px 28px;
-    text-align: center;
-    position: relative;
-  }
-
-  .day-label {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    font-size: 13px;
-    font-weight: 700;
-    letter-spacing: 2px;
-    margin-bottom: 12px;
-  }
-
-  .day-date {
-    font-size: 14px;
-    font-weight: 500;
-    opacity: 0.7;
-    margin-bottom: 8px;
-  }
-
-  .day-name {
-    font-size: 36px;
-    font-weight: 800;
-    line-height: 1.2;
-    margin-bottom: 4px;
-  }
-
-  .day-emoji-big {
-    font-size: 80px;
-    margin: 20px 0;
-    filter: drop-shadow(0 8px 16px rgba(0,0,0,0.1));
-  }
-
-  .gift-card {
-    width: calc(100% - 40px);
-    margin: 0 20px;
-    background: #fff;
-    border-radius: 24px;
-    padding: 28px 24px;
-    box-shadow: 0 8px 32px rgba(0,0,0,0.08);
-    text-align: center;
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    margin-bottom: 20px;
-  }
-
-  .gift-condition {
-    display: inline-block;
-    background: #f0f0f0;
-    border-radius: 30px;
-    padding: 8px 20px;
-    font-size: 14px;
-    font-weight: 700;
-    margin-bottom: 20px;
-    color: #333;
-  }
-
-  .gift-condition strong {
-    color: #d62828;
-    font-size: 18px;
-  }
-
-  .gift-name {
-    font-size: 22px;
-    font-weight: 800;
-    color: #1b4332;
-    margin-bottom: 8px;
-    line-height: 1.3;
-  }
-
-  .gift-desc {
-    font-size: 13px;
-    color: #888;
-    margin-bottom: 20px;
-    line-height: 1.5;
-  }
-
-  .gift-price-tag {
-    display: inline-block;
-    background: linear-gradient(135deg, #2d6a4f, #40916c);
-    color: #fff;
-    border-radius: 12px;
-    padding: 12px 24px;
-    font-size: 13px;
-    font-weight: 600;
-  }
-
-  .gift-price-tag strong {
-    font-size: 20px;
-    margin-left: 4px;
-  }
-
-  /* Day color themes */
-  .day-mon .day-header { background: linear-gradient(180deg, #f0e6d3 0%, #faf6f0 100%); color: #5c4a2a; }
-  .day-tue .day-header { background: linear-gradient(180deg, #ffe0c2 0%, #fff5ed 100%); color: #8b4513; }
-  .day-wed .day-header { background: linear-gradient(180deg, #d4edda 0%, #f0f8f0 100%); color: #1b4332; }
-  .day-thu .day-header { background: linear-gradient(180deg, #fff3cd 0%, #fffdf5 100%); color: #7a6200; }
-  .day-fri .day-header { background: linear-gradient(180deg, #cce5ff 0%, #f0f7ff 100%); color: #0a3d6e; }
-
-  /* ════════════════════════════════════
-     CARD 8 — Summary Table
-     ════════════════════════════════════ */
-  .card-summary .card-inner {
-    background: linear-gradient(160deg, #1b4332 0%, #2d6a4f 60%, #52b788 100%);
-    color: #fff;
-    text-align: center;
-    justify-content: flex-start;
-    padding-top: 48px;
-  }
-
-  .card-summary .section-label {
-    font-size: 12px;
-    font-weight: 700;
-    letter-spacing: 3px;
-    opacity: 0.6;
-    margin-bottom: 12px;
-  }
-
-  .card-summary h2 {
-    font-size: 24px;
-    font-weight: 800;
-    margin-bottom: 28px;
-  }
-
-  .summary-table {
-    width: 100%;
-    border-radius: 20px;
-    overflow: hidden;
-    background: rgba(255,255,255,0.1);
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255,255,255,0.15);
-  }
-
-  .summary-row {
-    display: flex;
-    align-items: center;
-    padding: 14px 20px;
-    border-bottom: 1px solid rgba(255,255,255,0.08);
-    font-size: 13px;
-  }
-
-  .summary-row:last-child { border-bottom: none; }
-
-  .summary-row.header {
-    background: rgba(255,255,255,0.1);
-    font-weight: 700;
-    font-size: 11px;
-    letter-spacing: 1px;
-    opacity: 0.8;
-  }
-
-  .summary-row .col-day { width: 15%; text-align: center; }
-  .summary-row .col-cond { width: 25%; text-align: center; }
-  .summary-row .col-gift { width: 38%; text-align: left; font-weight: 600; }
-  .summary-row .col-val { width: 22%; text-align: right; font-weight: 700; color: #b7e4c7; }
-
-  .summary-row.header .col-val { color: inherit; }
-
-  .summary-note {
-    margin-top: 20px;
-    font-size: 12px;
-    opacity: 0.6;
-    line-height: 1.6;
-  }
-
-  /* ════════════════════════════════════
-     CARD 9 — CTA / Closing
-     ════════════════════════════════════ */
-  .card-cta .card-inner {
-    background: linear-gradient(160deg, #2d6a4f 0%, #40916c 50%, #52b788 100%);
-    color: #fff;
-    text-align: center;
-  }
-
-  .card-cta .closing-emoji {
-    font-size: 64px;
-    margin-bottom: 24px;
-  }
-
-  .card-cta h2 {
-    font-size: 26px;
-    font-weight: 800;
-    line-height: 1.4;
-    margin-bottom: 12px;
-  }
-
-  .card-cta .sub {
-    font-size: 15px;
-    opacity: 0.8;
-    line-height: 1.6;
-    margin-bottom: 36px;
-  }
-
-  .cta-button {
-    display: inline-block;
-    background: #fff;
-    color: #1b4332;
-    font-size: 16px;
-    font-weight: 800;
-    padding: 18px 48px;
-    border-radius: 50px;
-    text-decoration: none;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.15);
-    transition: transform 0.2s;
-    margin-bottom: 24px;
-  }
-
-  .cta-button:active { transform: scale(0.96); }
-
-  .card-cta .notice {
-    font-size: 11px;
-    opacity: 0.5;
-    line-height: 1.6;
-  }
-
-  /* ── Nav arrows ── */
-  .nav-arrows {
-    display: flex;
-    justify-content: center;
-    gap: 12px;
-    padding-bottom: 32px;
-  }
-
-  .nav-btn {
-    width: 44px; height: 44px;
-    border-radius: 50%;
-    border: 2px solid #2d6a4f;
-    background: #fff;
-    color: #2d6a4f;
-    font-size: 18px;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: all 0.2s;
-  }
-
-  .nav-btn:active { background: #2d6a4f; color: #fff; }
-  .nav-btn:disabled { opacity: 0.3; pointer-events: none; }
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
+
+:root {
+  --green-deep: #1b4332;
+  --green-main: #2d6a4f;
+  --green-mid: #40916c;
+  --green-light: #52b788;
+  --green-pale: #d8f3dc;
+  --warm-bg: #faf7f2;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html {
+  scroll-snap-type: y mandatory;
+  overflow-y: scroll;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+}
+
+body {
+  font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, sans-serif;
+  background: #000;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+/* ── 각 카드 = 1 화면 ── */
+.card {
+  width: 100%;
+  height: 100vh;
+  height: 100dvh;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.card-body {
+  width: 100%;
+  max-width: 430px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0 32px;
+  text-align: center;
+  position: relative;
+}
+
+/* ── 페이지 인디케이터 (오른쪽 세로) ── */
+.page-indicator {
+  position: fixed;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  z-index: 100;
+}
+
+.page-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.25);
+  transition: all 0.3s;
+  cursor: pointer;
+}
+
+.page-dot.active {
+  height: 20px;
+  border-radius: 3px;
+  background: #fff;
+}
+
+/* 스크롤 힌트 화살표 */
+.scroll-hint {
+  position: absolute;
+  bottom: 28px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: rgba(255,255,255,0.4);
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 2px;
+  animation: bounce 2s ease-in-out infinite;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.scroll-hint svg {
+  width: 20px;
+  height: 20px;
+  fill: none;
+  stroke: rgba(255,255,255,0.4);
+  stroke-width: 2;
+  stroke-linecap: round;
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateX(-50%) translateY(0); opacity: 0.4; }
+  50% { transform: translateX(-50%) translateY(8px); opacity: 0.8; }
+}
+
+/* ══════════════════════════════════════
+   CARD 1 — 커버
+   ══════════════════════════════════════ */
+.c-cover { background: linear-gradient(160deg, #0d2818 0%, var(--green-deep) 40%, var(--green-main) 100%); }
+.c-cover .card-body { color: #fff; gap: 8px; }
+.c-cover .badge {
+  background: rgba(255,255,255,0.1);
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 40px;
+  padding: 10px 24px;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  margin-bottom: 24px;
+}
+.c-cover .num {
+  font-size: 120px;
+  font-weight: 900;
+  line-height: 1;
+  background: linear-gradient(135deg, #fff 20%, var(--green-pale));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.c-cover .num-sub {
+  font-size: 22px;
+  font-weight: 600;
+  opacity: 0.75;
+  letter-spacing: 4px;
+  margin-bottom: 40px;
+}
+.c-cover h1 {
+  font-size: 36px;
+  font-weight: 800;
+  line-height: 1.35;
+  margin-bottom: 16px;
+}
+.c-cover .period {
+  font-size: 16px;
+  font-weight: 500;
+  opacity: 0.6;
+}
+
+/* ══════════════════════════════════════
+   CARD 2 — 이벤트 안내
+   ══════════════════════════════════════ */
+.c-info { background: var(--warm-bg); }
+.c-info .card-body { color: var(--green-deep); gap: 0; justify-content: center; }
+.c-info .tag {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--green-main);
+  letter-spacing: 3px;
+  margin-bottom: 20px;
+}
+.c-info h2 {
+  font-size: 32px;
+  font-weight: 800;
+  line-height: 1.4;
+  margin-bottom: 40px;
+}
+.c-info .info-row {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 18px 0;
+  border-bottom: 1px solid rgba(0,0,0,0.06);
+  text-align: left;
+}
+.c-info .info-row:last-child { border-bottom: none; }
+.c-info .info-icon { font-size: 28px; flex-shrink: 0; width: 40px; text-align: center; }
+.c-info .info-label { font-size: 12px; color: #999; font-weight: 600; margin-bottom: 2px; }
+.c-info .info-value { font-size: 18px; font-weight: 700; line-height: 1.4; }
+.scroll-hint-dark {
+  position: absolute;
+  bottom: 28px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: rgba(0,0,0,0.2);
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 2px;
+  animation: bounce-dark 2s ease-in-out infinite;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+.scroll-hint-dark svg {
+  width: 20px; height: 20px;
+  fill: none; stroke: rgba(0,0,0,0.2); stroke-width: 2; stroke-linecap: round;
+}
+@keyframes bounce-dark {
+  0%,100% { transform: translateX(-50%) translateY(0); opacity: 0.3; }
+  50% { transform: translateX(-50%) translateY(8px); opacity: 0.6; }
+}
+
+/* ══════════════════════════════════════
+   CARD 3 — 참여방법
+   ══════════════════════════════════════ */
+.c-how { background: var(--green-deep); }
+.c-how .card-body { color: #fff; gap: 0; }
+.c-how .tag { font-size: 13px; font-weight: 700; opacity: 0.5; letter-spacing: 3px; margin-bottom: 20px; }
+.c-how h2 { font-size: 32px; font-weight: 800; line-height: 1.4; margin-bottom: 48px; }
+.c-how .steps { display: flex; flex-direction: column; gap: 24px; width: 100%; }
+.c-how .step {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  text-align: left;
+}
+.c-how .step-num {
+  width: 52px; height: 52px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.1);
+  border: 2px solid rgba(255,255,255,0.2);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 20px; font-weight: 800;
+  flex-shrink: 0;
+}
+.c-how .step-text { font-size: 20px; font-weight: 600; line-height: 1.4; }
+.c-how .step-text strong { font-size: 22px; font-weight: 800; }
+
+/* ══════════════════════════════════════
+   CARD 4~8 — 요일별 (공통)
+   ══════════════════════════════════════ */
+.c-day .card-body {
+  justify-content: flex-start;
+  padding: 0;
+  gap: 0;
+}
+.c-day .day-top {
+  width: 100%;
+  padding: 48px 32px 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+.c-day .day-chip {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  opacity: 0.6;
+  margin-bottom: 8px;
+}
+.c-day .day-title {
+  font-size: 40px;
+  font-weight: 900;
+  line-height: 1.2;
+  margin-bottom: 4px;
+}
+.c-day .day-date {
+  font-size: 15px;
+  font-weight: 500;
+  opacity: 0.5;
+  margin-bottom: 16px;
+}
+.c-day .day-img {
+  width: calc(100% - 48px);
+  max-width: 340px;
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: 0 12px 40px rgba(0,0,0,0.12);
+  margin-bottom: 24px;
+}
+.c-day .day-img img { width: 100%; height: auto; display: block; }
+.c-day .day-bottom {
+  width: 100%;
+  padding: 0 32px;
+  text-align: center;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 12px;
+}
+.c-day .gift-name {
+  font-size: 28px;
+  font-weight: 800;
+  line-height: 1.3;
+}
+.c-day .gift-sub {
+  font-size: 15px;
+  opacity: 0.55;
+  line-height: 1.5;
+  font-weight: 500;
+}
+.c-day .condition-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 8px;
+  padding: 14px 28px;
+  border-radius: 50px;
+  font-size: 18px;
+  font-weight: 700;
+  align-self: center;
+}
+.c-day .condition-pill .amt {
+  font-size: 26px;
+  font-weight: 900;
+}
+
+/* 요일별 테마 */
+.c-mon { background: #faf6f0; }
+.c-mon .card-body { color: #4a3520; }
+.c-mon .condition-pill { background: #4a3520; color: #fff; }
+
+.c-tue { background: #fff5ed; }
+.c-tue .card-body { color: #7a3b10; }
+.c-tue .condition-pill { background: #7a3b10; color: #fff; }
+
+.c-wed { background: #f0f8f0; }
+.c-wed .card-body { color: var(--green-deep); }
+.c-wed .condition-pill { background: var(--green-deep); color: #fff; }
+
+.c-thu { background: #fffdf0; }
+.c-thu .card-body { color: #5c4a00; }
+.c-thu .condition-pill { background: #5c4a00; color: #fff; }
+
+.c-fri { background: #f0f5ff; }
+.c-fri .card-body { color: #0a3060; }
+.c-fri .condition-pill { background: #0a3060; color: #fff; }
+
+/* ══════════════════════════════════════
+   CARD 9 — 한눈에 보기
+   ══════════════════════════════════════ */
+.c-summary { background: var(--green-deep); }
+.c-summary .card-body { color: #fff; gap: 0; justify-content: flex-start; padding-top: 56px; }
+.c-summary .tag { font-size: 13px; font-weight: 700; opacity: 0.4; letter-spacing: 3px; margin-bottom: 16px; }
+.c-summary h2 { font-size: 30px; font-weight: 800; margin-bottom: 32px; }
+.c-summary .tbl {
+  width: 100%;
+  border-radius: 20px;
+  overflow: hidden;
+  background: rgba(255,255,255,0.07);
+  border: 1px solid rgba(255,255,255,0.1);
+}
+.c-summary .tbl-row {
+  display: grid;
+  grid-template-columns: 48px 1fr 80px;
+  align-items: center;
+  padding: 16px 20px;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  gap: 12px;
+}
+.c-summary .tbl-row:last-child { border-bottom: none; }
+.c-summary .tbl-emoji { font-size: 24px; text-align: center; }
+.c-summary .tbl-name { font-size: 16px; font-weight: 700; line-height: 1.3; }
+.c-summary .tbl-name small { display: block; font-size: 12px; font-weight: 500; opacity: 0.5; margin-top: 2px; }
+.c-summary .tbl-cond {
+  text-align: right;
+  font-size: 16px;
+  font-weight: 800;
+  color: var(--green-pale);
+}
+.c-summary .note {
+  margin-top: 24px;
+  font-size: 13px;
+  opacity: 0.35;
+  line-height: 1.7;
+}
+
+/* ══════════════════════════════════════
+   CARD 10 — 마무리
+   ══════════════════════════════════════ */
+.c-end { background: linear-gradient(160deg, var(--green-main) 0%, var(--green-light) 100%); }
+.c-end .card-body { color: #fff; gap: 12px; }
+.c-end .emoji { font-size: 72px; margin-bottom: 16px; }
+.c-end h2 { font-size: 34px; font-weight: 800; line-height: 1.4; }
+.c-end .sub { font-size: 17px; opacity: 0.7; line-height: 1.6; margin-bottom: 24px; }
+.c-end .cta {
+  display: inline-block;
+  background: #fff;
+  color: var(--green-deep);
+  font-size: 18px;
+  font-weight: 800;
+  padding: 20px 52px;
+  border-radius: 60px;
+  text-decoration: none;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.15);
+  transition: transform 0.15s;
+  margin-bottom: 16px;
+}
+.c-end .cta:active { transform: scale(0.96); }
+.c-end .footer {
+  font-size: 12px;
+  opacity: 0.4;
+  line-height: 1.6;
+  margin-top: 8px;
+}
+
+/* 430px 이상 데스크톱 */
+@media (min-width: 431px) {
+  .page-indicator { right: calc(50% - 230px); }
+}
 </style>
 </head>
 <body>
 
-<div class="card-wrapper">
-  <div class="swiper" id="swiper">
-    <div class="swiper-track" id="track">
+<!-- 세로 페이지 인디케이터 -->
+<div class="page-indicator" id="indicator"></div>
 
-      <!-- ═══ CARD 1: Cover ═══ -->
-      <div class="card card-cover">
-        <div class="card-inner">
-          <span class="page-num">1 / 9</span>
-          <div class="badge">서울남부두레생협</div>
-          <div class="deco-leaf">🌿</div>
-          <div class="anniversary">33</div>
-          <div class="anniversary-sub">주년 총회기념</div>
-          <h1>감사 증정<br>기획전</h1>
-          <p class="period">2026. 3. 31(월) ~ 4. 4(금)</p>
-          <span class="cta-hint">← 밀어서 넘기기 →</span>
-        </div>
-      </div>
-
-      <!-- ═══ CARD 2: Event Info ═══ -->
-      <div class="card card-info">
-        <div class="card-inner">
-          <span class="page-num" style="color:rgba(0,0,0,0.3)">2 / 9</span>
-          <div class="section-label">EVENT INFO</div>
-          <h2>매일매일 달라지는<br>봄 선물 🎁</h2>
-          <div class="info-list">
-            <div class="info-item">
-              <div class="info-icon green">📅</div>
-              <div>
-                <div class="label">기간</div>
-                <div class="value">3/31(월) ~ 4/4(금), 5일간</div>
-              </div>
-            </div>
-            <div class="info-item">
-              <div class="info-icon yellow">👥</div>
-              <div>
-                <div class="label">대상</div>
-                <div class="value">서울남부 온라인 주문 조합원</div>
-              </div>
-            </div>
-            <div class="info-item">
-              <div class="info-icon blue">🎯</div>
-              <div>
-                <div class="label">방식</div>
-                <div class="value">요일별 구매금액 달성 시<br>증정품 자동 포함!</div>
-              </div>
-            </div>
-          </div>
-          <div class="how-box">
-            <div class="how-title">참여 방법</div>
-            <div class="how-steps">
-              <span class="step">구매금액<br>달성</span>
-              <span class="arrow">→</span>
-              <span class="step">증정품<br>자동 추가</span>
-              <span class="arrow">→</span>
-              <span class="step">배송시<br>함께 도착!</span>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- ═══ CARD 3: 월요일 ═══ -->
-      <div class="card card-day day-mon">
-        <div class="card-inner">
-          <span class="page-num" style="color:rgba(0,0,0,0.3)">3 / 9</span>
-          <div class="day-header">
-            <div class="day-label">DAY 1</div>
-            <div class="day-date">3월 31일</div>
-            <div class="day-name">월요일</div>
-            <div class="day-emoji-big">🍄</div>
-          </div>
-          <div class="gift-card">
-            <div class="gift-condition"><strong>3만원</strong> 이상 구매 시</div>
-            <div class="gift-name">느타리버섯 200g</div>
-            <div class="gift-desc">무농약 인증 · 신선한 봄 버섯<br>볶음·찌개·전 어디든 활용!</div>
-            <div class="gift-price-tag">판매가 <strong>1,628원</strong> 상당</div>
-          </div>
-        </div>
-      </div>
-
-      <!-- ═══ CARD 4: 화요일 ═══ -->
-      <div class="card card-day day-tue">
-        <div class="card-inner">
-          <span class="page-num" style="color:rgba(0,0,0,0.3)">4 / 9</span>
-          <div class="day-header">
-            <div class="day-label">DAY 2</div>
-            <div class="day-date">4월 1일</div>
-            <div class="day-name">화요일</div>
-            <div class="day-emoji-big">🥕</div>
-          </div>
-          <div class="gift-card">
-            <div class="gift-condition"><strong>3만원</strong> 이상 구매 시</div>
-            <div class="gift-name">당근 500g</div>
-            <div class="gift-desc">무농약 인증 · 냉장고 필수템<br>아이 간식부터 요리까지!</div>
-            <div class="gift-price-tag">판매가 <strong>2,300원</strong> 상당</div>
-          </div>
-        </div>
-      </div>
-
-      <!-- ═══ CARD 5: 수요일 ═══ -->
-      <div class="card card-day day-wed">
-        <div class="card-inner">
-          <span class="page-num" style="color:rgba(0,0,0,0.3)">5 / 9</span>
-          <div class="day-header">
-            <div class="day-label">DAY 3</div>
-            <div class="day-date">4월 2일</div>
-            <div class="day-name">수요일</div>
-            <div class="day-emoji-big">🌿</div>
-          </div>
-          <div class="gift-card">
-            <div class="gift-condition"><strong>5만원</strong> 이상 구매 시</div>
-            <div class="gift-name">쑥버무리 250g</div>
-            <div class="gift-desc">봄 향기 가득한 제철 간식<br>온 가족이 좋아하는 떡!</div>
-            <div class="gift-price-tag">판매가 <strong>4,800원</strong> 상당</div>
-          </div>
-        </div>
-      </div>
-
-      <!-- ═══ CARD 6: 목요일 ═══ -->
-      <div class="card card-day day-thu">
-        <div class="card-inner">
-          <span class="page-num" style="color:rgba(0,0,0,0.3)">6 / 9</span>
-          <div class="day-header">
-            <div class="day-label">DAY 4</div>
-            <div class="day-date">4월 3일</div>
-            <div class="day-name">목요일</div>
-            <div class="day-emoji-big">🥚</div>
-          </div>
-          <div class="gift-card">
-            <div class="gift-condition"><strong>7만원</strong> 이상 구매 시</div>
-            <div class="gift-name">원삼유정란 10구</div>
-            <div class="gift-desc">자연방사 유정란<br>든든한 하루의 시작!</div>
-            <div class="gift-price-tag">판매가 <strong>4,800원</strong> 상당</div>
-          </div>
-        </div>
-      </div>
-
-      <!-- ═══ CARD 7: 금요일 ═══ -->
-      <div class="card card-day day-fri">
-        <div class="card-inner">
-          <span class="page-num" style="color:rgba(0,0,0,0.3)">7 / 9</span>
-          <div class="day-header">
-            <div class="day-label">DAY 5</div>
-            <div class="day-date">4월 4일</div>
-            <div class="day-name">금요일</div>
-            <div class="day-emoji-big">🐟</div>
-          </div>
-          <div class="gift-card">
-            <div class="gift-condition"><strong>10만원</strong> 이상 구매 시</div>
-            <div class="gift-name">냉장 손질삼치 300g</div>
-            <div class="gift-desc">손질 완료 · 바로 조리 가능<br>주말 밥상을 풍성하게!</div>
-            <div class="gift-price-tag">판매가 <strong>8,100원</strong> 상당</div>
-          </div>
-        </div>
-      </div>
-
-      <!-- ═══ CARD 8: Summary ═══ -->
-      <div class="card card-summary">
-        <div class="card-inner">
-          <span class="page-num">8 / 9</span>
-          <div class="section-label">AT A GLANCE</div>
-          <h2>한눈에 보기 📋</h2>
-          <div class="summary-table">
-            <div class="summary-row header">
-              <span class="col-day">요일</span>
-              <span class="col-cond">구매조건</span>
-              <span class="col-gift">증정품</span>
-              <span class="col-val">가격</span>
-            </div>
-            <div class="summary-row">
-              <span class="col-day">🍄 월</span>
-              <span class="col-cond">3만원↑</span>
-              <span class="col-gift">느타리버섯 200g</span>
-              <span class="col-val">1,628원</span>
-            </div>
-            <div class="summary-row">
-              <span class="col-day">🥕 화</span>
-              <span class="col-cond">3만원↑</span>
-              <span class="col-gift">당근 500g</span>
-              <span class="col-val">2,300원</span>
-            </div>
-            <div class="summary-row">
-              <span class="col-day">🌿 수</span>
-              <span class="col-cond">5만원↑</span>
-              <span class="col-gift">쑥버무리 250g</span>
-              <span class="col-val">4,800원</span>
-            </div>
-            <div class="summary-row">
-              <span class="col-day">🥚 목</span>
-              <span class="col-cond">7만원↑</span>
-              <span class="col-gift">원삼유정란 10구</span>
-              <span class="col-val">4,800원</span>
-            </div>
-            <div class="summary-row">
-              <span class="col-day">🐟 금</span>
-              <span class="col-cond">10만원↑</span>
-              <span class="col-gift">손질삼치 300g</span>
-              <span class="col-val">8,100원</span>
-            </div>
-          </div>
-          <p class="summary-note">
-            * 1인 1일 1회 한정<br>
-            * 배송일 기준 적용<br>
-            * 재고 소진 시 조기 종료
-          </p>
-        </div>
-      </div>
-
-      <!-- ═══ CARD 9: CTA ═══ -->
-      <div class="card card-cta">
-        <div class="card-inner">
-          <span class="page-num">9 / 9</span>
-          <div class="closing-emoji">🌱</div>
-          <h2>봄과 함께<br>감사를 전합니다</h2>
-          <p class="sub">
-            서울남부두레생협과 함께한<br>
-            33년의 시간에 감사드립니다
-          </p>
-          <a href="https://ecoop.or.kr" class="cta-button">지금 주문하기 →</a>
-          <p class="notice">
-            서울남부두레생협 온라인사업팀<br>
-            3/31(월) ~ 4/4(금) · 5일간
-          </p>
-        </div>
-      </div>
-
-    </div><!-- /track -->
-  </div><!-- /swiper -->
-
-  <!-- Pagination -->
-  <div class="pagination" id="pagination"></div>
-
-  <!-- Nav Arrows -->
-  <div class="nav-arrows">
-    <button class="nav-btn" id="prevBtn" disabled>‹</button>
-    <button class="nav-btn" id="nextBtn">›</button>
+<!-- ═══ 1. 커버 ═══ -->
+<section class="card c-cover" data-card="0">
+  <div class="card-body">
+    <div class="badge">서울남부두레생협</div>
+    <div class="num">33</div>
+    <div class="num-sub">주년 총회기념</div>
+    <h1>감사 증정<br>기획전</h1>
+    <p class="period">2026. 3. 31(월) ~ 4. 4(금)</p>
+    <div class="scroll-hint">
+      <svg viewBox="0 0 24 24"><path d="M12 5 L12 19 M6 13 L12 19 L18 13"/></svg>
+    </div>
   </div>
-</div>
+</section>
+
+<!-- ═══ 2. 이벤트 안내 ═══ -->
+<section class="card c-info" data-card="1">
+  <div class="card-body">
+    <div class="tag">EVENT</div>
+    <h2>매일매일<br>달라지는<br>봄 선물</h2>
+    <div class="info-row">
+      <span class="info-icon">📅</span>
+      <div>
+        <div class="info-label">기간</div>
+        <div class="info-value">3/31(월) ~ 4/4(금)</div>
+      </div>
+    </div>
+    <div class="info-row">
+      <span class="info-icon">👥</span>
+      <div>
+        <div class="info-label">대상</div>
+        <div class="info-value">서울남부 온라인<br>주문 조합원 전체</div>
+      </div>
+    </div>
+    <div class="info-row">
+      <span class="info-icon">🎁</span>
+      <div>
+        <div class="info-label">방식</div>
+        <div class="info-value">구매금액 달성 시<br>증정품 자동 포함</div>
+      </div>
+    </div>
+    <div class="scroll-hint-dark">
+      <svg viewBox="0 0 24 24"><path d="M12 5 L12 19 M6 13 L12 19 L18 13"/></svg>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ 3. 참여방법 ═══ -->
+<section class="card c-how" data-card="2">
+  <div class="card-body">
+    <div class="tag">HOW TO</div>
+    <h2>참여 방법은<br>아주 간단해요</h2>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-text"><strong>장보기</strong>에서<br>원하는 생활재 담기</div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-text">요일별 <strong>구매 조건</strong><br>금액 이상 주문</div>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-text">증정품이<br><strong>배송에 자동 포함!</strong></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ 4. 월요일 ═══ -->
+<section class="card c-day c-mon" data-card="3">
+  <div class="card-body">
+    <div class="day-top">
+      <div class="day-chip">DAY 1</div>
+      <div class="day-title">월요일</div>
+      <div class="day-date">3월 31일</div>
+      <div class="day-img">
+        <img src="https://dureimg.ecoop.or.kr:9091/Delsys/DLOG/Goods/GoodsMaster/GoodsImage/50462C.png" alt="느타리버섯">
+      </div>
+    </div>
+    <div class="day-bottom">
+      <div class="gift-name">🍄 느타리버섯<br>200g</div>
+      <div class="gift-sub">무농약 인증 · 우리 땅에서 키운 봄 버섯</div>
+      <div class="condition-pill"><span class="amt">3</span>만원 이상 구매 시</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ 5. 화요일 ═══ -->
+<section class="card c-day c-tue" data-card="4">
+  <div class="card-body">
+    <div class="day-top">
+      <div class="day-chip">DAY 2</div>
+      <div class="day-title">화요일</div>
+      <div class="day-date">4월 1일</div>
+      <div class="day-img">
+        <img src="https://dureimg.ecoop.or.kr:9091/Delsys/DLOG/Goods/GoodsMaster/GoodsImage/1325C.png" alt="당근">
+      </div>
+    </div>
+    <div class="day-bottom">
+      <div class="gift-name">🥕 당근<br>500g</div>
+      <div class="gift-sub">무농약 인증 · 생산자가 직접 키운 알찬 봄 당근</div>
+      <div class="condition-pill"><span class="amt">3</span>만원 이상 구매 시</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ 6. 수요일 ═══ -->
+<section class="card c-day c-wed" data-card="5">
+  <div class="card-body">
+    <div class="day-top">
+      <div class="day-chip">DAY 3</div>
+      <div class="day-title">수요일</div>
+      <div class="day-date">4월 2일</div>
+      <div class="day-img">
+        <img src="https://dureimg.ecoop.or.kr:9091/Delsys/DLOG/Goods/GoodsMaster/GoodsImage/54286C.jpg" alt="쑥버무리">
+      </div>
+    </div>
+    <div class="day-bottom">
+      <div class="gift-name">🌿 쑥버무리<br>250g</div>
+      <div class="gift-sub">봄 향기 가득 · 온 가족 제철 간식</div>
+      <div class="condition-pill"><span class="amt">5</span>만원 이상 구매 시</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ 7. 목요일 ═══ -->
+<section class="card c-day c-thu" data-card="6">
+  <div class="card-body">
+    <div class="day-top">
+      <div class="day-chip">DAY 4</div>
+      <div class="day-title">목요일</div>
+      <div class="day-date">4월 3일</div>
+      <div class="day-img">
+        <img src="https://dureimg.ecoop.or.kr:9091/Delsys/DLOG/Goods/GoodsMaster/GoodsImage/21492C.png" alt="원삼유정란">
+      </div>
+    </div>
+    <div class="day-bottom">
+      <div class="gift-name">🥚 원삼유정란<br>10구</div>
+      <div class="gift-sub">자연방사 · 건강한 닭이 낳은 건강한 알</div>
+      <div class="condition-pill"><span class="amt">7</span>만원 이상 구매 시</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ 8. 금요일 ═══ -->
+<section class="card c-day c-fri" data-card="7">
+  <div class="card-body">
+    <div class="day-top">
+      <div class="day-chip">DAY 5 · LAST</div>
+      <div class="day-title">금요일</div>
+      <div class="day-date">4월 4일</div>
+      <div class="day-img">
+        <img src="https://dureimg.ecoop.or.kr:9091/Delsys/DLOG/Goods/GoodsMaster/GoodsImage/54967C.jpg" alt="손질삼치">
+      </div>
+    </div>
+    <div class="day-bottom">
+      <div class="gift-name">🐟 냉장 손질삼치<br>300g</div>
+      <div class="gift-sub">손질 완료 · 주말 밥상을 풍성하게</div>
+      <div class="condition-pill"><span class="amt">10</span>만원 이상 구매 시</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ 9. 한눈에 보기 ═══ -->
+<section class="card c-summary" data-card="8">
+  <div class="card-body">
+    <div class="tag">SUMMARY</div>
+    <h2>한눈에 보기</h2>
+    <div class="tbl">
+      <div class="tbl-row">
+        <span class="tbl-emoji">🍄</span>
+        <div class="tbl-name">느타리버섯 200g<small>월 · 3/31</small></div>
+        <span class="tbl-cond">3만원~</span>
+      </div>
+      <div class="tbl-row">
+        <span class="tbl-emoji">🥕</span>
+        <div class="tbl-name">당근 500g<small>화 · 4/1</small></div>
+        <span class="tbl-cond">3만원~</span>
+      </div>
+      <div class="tbl-row">
+        <span class="tbl-emoji">🌿</span>
+        <div class="tbl-name">쑥버무리 250g<small>수 · 4/2</small></div>
+        <span class="tbl-cond">5만원~</span>
+      </div>
+      <div class="tbl-row">
+        <span class="tbl-emoji">🥚</span>
+        <div class="tbl-name">원삼유정란 10구<small>목 · 4/3</small></div>
+        <span class="tbl-cond">7만원~</span>
+      </div>
+      <div class="tbl-row">
+        <span class="tbl-emoji">🐟</span>
+        <div class="tbl-name">손질삼치 300g<small>금 · 4/4</small></div>
+        <span class="tbl-cond">10만원~</span>
+      </div>
+    </div>
+    <p class="note">
+      * 1인 1일 1회 · 배송일 기준 적용<br>
+      * 재고 소진 시 조기 종료
+    </p>
+  </div>
+</section>
+
+<!-- ═══ 10. 마무리 ═══ -->
+<section class="card c-end" data-card="9">
+  <div class="card-body">
+    <div class="emoji">🌱</div>
+    <h2>봄과 함께<br>감사를<br>전합니다</h2>
+    <p class="sub">
+      조합원님과 함께한 33년,<br>
+      그 시간이 두레생협의 힘입니다
+    </p>
+    <a href="https://www.ecoop.or.kr/DureShop/shopMain.do" class="cta">지금 장보기 →</a>
+    <p class="footer">
+      서울남부두레생협 온라인사업팀<br>
+      3/31(월) ~ 4/4(금) · 5일간
+    </p>
+  </div>
+</section>
 
 <script>
 (function() {
-  const track = document.getElementById('track');
-  const swiper = document.getElementById('swiper');
-  const pagination = document.getElementById('pagination');
-  const prevBtn = document.getElementById('prevBtn');
-  const nextBtn = document.getElementById('nextBtn');
-  const cards = track.children;
+  const cards = document.querySelectorAll('.card');
+  const indicator = document.getElementById('indicator');
   const total = cards.length;
-  let current = 0;
-  let startX = 0, moveX = 0, isDragging = false;
 
-  // Build dots
+  // 인디케이터 생성
   for (let i = 0; i < total; i++) {
     const dot = document.createElement('div');
-    dot.className = 'dot' + (i === 0 ? ' active' : '');
-    dot.addEventListener('click', () => goTo(i));
-    pagination.appendChild(dot);
-  }
-
-  function goTo(index) {
-    current = Math.max(0, Math.min(index, total - 1));
-    track.style.transform = `translateX(-${current * 100}%)`;
-    document.querySelectorAll('.dot').forEach((d, i) => {
-      d.className = 'dot' + (i === current ? ' active' : '');
+    dot.className = 'page-dot' + (i === 0 ? ' active' : '');
+    dot.addEventListener('click', () => {
+      cards[i].scrollIntoView({ behavior: 'smooth' });
     });
-    prevBtn.disabled = current === 0;
-    nextBtn.disabled = current === total - 1;
+    indicator.appendChild(dot);
   }
 
-  prevBtn.addEventListener('click', () => goTo(current - 1));
-  nextBtn.addEventListener('click', () => goTo(current + 1));
+  const dots = indicator.querySelectorAll('.page-dot');
 
-  // Touch swipe
-  swiper.addEventListener('touchstart', e => {
-    startX = e.touches[0].clientX;
-    isDragging = true;
-    track.style.transition = 'none';
-  }, { passive: true });
+  // Intersection Observer로 현재 페이지 감지
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const idx = Number(entry.target.dataset.card);
+        dots.forEach((d, i) => {
+          d.className = 'page-dot' + (i === idx ? ' active' : '');
+        });
 
-  swiper.addEventListener('touchmove', e => {
-    if (!isDragging) return;
-    moveX = e.touches[0].clientX - startX;
-    const offset = -(current * swiper.offsetWidth) + moveX;
-    track.style.transform = `translateX(${offset}px)`;
-  }, { passive: true });
+        // 밝은 배경 카드에서는 인디케이터 색 변경
+        const lightCards = [1, 3, 4, 5, 6, 7]; // c-info, 요일 카드들
+        if (lightCards.includes(idx)) {
+          indicator.style.setProperty('--dot-color', 'rgba(0,0,0,0.15)');
+          dots.forEach((d, i) => {
+            d.style.background = i === idx ? '#333' : 'rgba(0,0,0,0.15)';
+          });
+        } else {
+          dots.forEach((d, i) => {
+            d.style.background = i === idx ? '#fff' : 'rgba(255,255,255,0.25)';
+          });
+        }
+      }
+    });
+  }, { threshold: 0.6 });
 
-  swiper.addEventListener('touchend', () => {
-    isDragging = false;
-    track.style.transition = 'transform 0.35s cubic-bezier(.4,0,.2,1)';
-    if (moveX < -50) goTo(current + 1);
-    else if (moveX > 50) goTo(current - 1);
-    else goTo(current);
-    moveX = 0;
+  cards.forEach(card => observer.observe(card));
+
+  // 키보드 네비게이션
+  let currentCard = 0;
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowDown' || e.key === ' ') {
+      e.preventDefault();
+      currentCard = Math.min(currentCard + 1, total - 1);
+      cards[currentCard].scrollIntoView({ behavior: 'smooth' });
+    }
+    if (e.key === 'ArrowUp') {
+      e.preventDefault();
+      currentCard = Math.max(currentCard - 1, 0);
+      cards[currentCard].scrollIntoView({ behavior: 'smooth' });
+    }
   });
 
-  // Keyboard
-  document.addEventListener('keydown', e => {
-    if (e.key === 'ArrowLeft') goTo(current - 1);
-    if (e.key === 'ArrowRight') goTo(current + 1);
-  });
+  // Observer로 currentCard 동기화
+  const syncObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        currentCard = Number(entry.target.dataset.card);
+      }
+    });
+  }, { threshold: 0.6 });
+  cards.forEach(card => syncObserver.observe(card));
 })();
 </script>
 
