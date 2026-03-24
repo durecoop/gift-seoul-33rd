@@ -1,0 +1,782 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>퇴계점 조합원님께 드리는 온라인 특별 증정 | 서울남부두레생협</title>
+<style>
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
+
+:root {
+  --warm-deep: #5c3d2e;
+  --warm-main: #8b5e3c;
+  --warm-light: #c49a6c;
+  --warm-pale: #faf3eb;
+  --green-deep: #1b4332;
+  --green-main: #2d6a4f;
+  --green-light: #52b788;
+  --green-pale: #d8f3dc;
+  --coral: #c85a3a;
+  --coral-light: #fff0eb;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html {
+  scroll-snap-type: y mandatory;
+  overflow-y: scroll;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+}
+
+body {
+  font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, sans-serif;
+  background: #000;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+.card {
+  width: 100%;
+  height: 100vh;
+  height: 100dvh;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.card-body {
+  width: 100%;
+  max-width: 430px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0 32px;
+  text-align: center;
+  position: relative;
+}
+
+/* 페이지 인디케이터 */
+.page-indicator {
+  position: fixed;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  z-index: 100;
+}
+
+.page-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.25);
+  transition: all 0.3s;
+  cursor: pointer;
+}
+
+.page-dot.active {
+  height: 20px;
+  border-radius: 3px;
+  background: #fff;
+}
+
+.scroll-hint {
+  position: absolute;
+  bottom: 28px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: rgba(255,255,255,0.4);
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 2px;
+  animation: bounce 2s ease-in-out infinite;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.scroll-hint svg {
+  width: 20px; height: 20px;
+  fill: none; stroke: rgba(255,255,255,0.4); stroke-width: 2; stroke-linecap: round;
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateX(-50%) translateY(0); opacity: 0.4; }
+  50% { transform: translateX(-50%) translateY(8px); opacity: 0.8; }
+}
+
+.scroll-hint-dark {
+  position: absolute;
+  bottom: 28px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: rgba(0,0,0,0.2);
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 2px;
+  animation: bounce-dark 2s ease-in-out infinite;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+.scroll-hint-dark svg {
+  width: 20px; height: 20px;
+  fill: none; stroke: rgba(0,0,0,0.2); stroke-width: 2; stroke-linecap: round;
+}
+@keyframes bounce-dark {
+  0%,100% { transform: translateX(-50%) translateY(0); opacity: 0.3; }
+  50% { transform: translateX(-50%) translateY(8px); opacity: 0.6; }
+}
+
+/* ══════════════════════════════════════
+   CARD 1 — 커버 (따뜻한 톤)
+   ══════════════════════════════════════ */
+.c-cover { background: linear-gradient(160deg, #3e2723 0%, var(--warm-deep) 40%, var(--warm-main) 100%); }
+.c-cover .card-body { color: #fff; gap: 8px; }
+.c-cover .badge {
+  background: rgba(255,255,255,0.1);
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 40px;
+  padding: 10px 24px;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  margin-bottom: 16px;
+}
+.c-cover .icon-wrap {
+  font-size: 64px;
+  margin-bottom: 16px;
+}
+.c-cover h1 {
+  font-size: 34px;
+  font-weight: 800;
+  line-height: 1.4;
+  margin-bottom: 16px;
+}
+.c-cover .desc {
+  font-size: 17px;
+  font-weight: 500;
+  opacity: 0.75;
+  line-height: 1.6;
+  margin-bottom: 12px;
+}
+.c-cover .period {
+  font-size: 15px;
+  font-weight: 600;
+  opacity: 0.5;
+}
+
+/* ══════════════════════════════════════
+   CARD 2 — 생협의 마음 (편지 형식)
+   ══════════════════════════════════════ */
+.c-letter { background: var(--warm-pale); }
+.c-letter .card-body { color: var(--warm-deep); gap: 0; }
+.c-letter .tag {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--warm-main);
+  letter-spacing: 3px;
+  margin-bottom: 28px;
+}
+.c-letter .letter-body {
+  width: 100%;
+  background: #fff;
+  border-radius: 24px;
+  padding: 36px 28px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.04);
+  text-align: left;
+  position: relative;
+}
+.c-letter .letter-body::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--warm-main), var(--warm-light));
+  border-radius: 24px 24px 0 0;
+}
+.c-letter .letter-body p {
+  font-size: 16px;
+  line-height: 1.85;
+  color: #444;
+  word-break: keep-all;
+}
+.c-letter .letter-body .hl {
+  color: var(--warm-deep);
+  font-weight: 700;
+}
+.c-letter .letter-body .sign {
+  margin-top: 24px;
+  text-align: right;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--warm-main);
+}
+
+/* ══════════════════════════════════════
+   CARD 3 — 이벤트 안내
+   ══════════════════════════════════════ */
+.c-info { background: #fff; }
+.c-info .card-body { color: var(--warm-deep); gap: 0; }
+.c-info .tag {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--coral);
+  letter-spacing: 3px;
+  margin-bottom: 20px;
+}
+.c-info h2 {
+  font-size: 32px;
+  font-weight: 800;
+  line-height: 1.4;
+  margin-bottom: 40px;
+}
+.c-info .info-row {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 18px 0;
+  border-bottom: 1px solid rgba(0,0,0,0.06);
+  text-align: left;
+}
+.c-info .info-row:last-child { border-bottom: none; }
+.c-info .info-icon { font-size: 28px; flex-shrink: 0; width: 40px; text-align: center; }
+.c-info .info-label { font-size: 12px; color: #999; font-weight: 600; margin-bottom: 2px; }
+.c-info .info-value { font-size: 18px; font-weight: 700; line-height: 1.4; }
+.c-info .info-value em { font-style: normal; color: var(--coral); }
+
+/* ══════════════════════════════════════
+   CARD 4 — 참여방법
+   ══════════════════════════════════════ */
+.c-how { background: var(--warm-deep); }
+.c-how .card-body { color: #fff; gap: 0; }
+.c-how .tag { font-size: 13px; font-weight: 700; opacity: 0.5; letter-spacing: 3px; margin-bottom: 20px; }
+.c-how h2 { font-size: 30px; font-weight: 800; line-height: 1.4; margin-bottom: 48px; }
+.c-how .steps { display: flex; flex-direction: column; gap: 24px; width: 100%; }
+.c-how .step {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  text-align: left;
+}
+.c-how .step-num {
+  width: 52px; height: 52px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.1);
+  border: 2px solid rgba(255,255,255,0.2);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 20px; font-weight: 800;
+  flex-shrink: 0;
+}
+.c-how .step-text { font-size: 19px; font-weight: 600; line-height: 1.5; }
+.c-how .step-text strong { font-size: 21px; font-weight: 800; }
+
+/* ══════════════════════════════════════
+   CARD 5~9 — 품목 카드 (공통)
+   ══════════════════════════════════════ */
+.c-item .card-body {
+  justify-content: flex-start;
+  padding: 0;
+  gap: 0;
+}
+.c-item .item-top {
+  width: 100%;
+  padding: 48px 32px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+.c-item .item-num {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  opacity: 0.5;
+  margin-bottom: 8px;
+}
+.c-item .item-title {
+  font-size: 36px;
+  font-weight: 900;
+  line-height: 1.2;
+  margin-bottom: 4px;
+}
+.c-item .item-spec {
+  font-size: 15px;
+  font-weight: 500;
+  opacity: 0.5;
+  margin-bottom: 16px;
+}
+.c-item .item-img {
+  width: calc(100% - 48px);
+  max-width: 300px;
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: 0 12px 40px rgba(0,0,0,0.1);
+  margin-bottom: 20px;
+}
+.c-item .item-img img { width: 100%; height: auto; display: block; }
+.c-item .item-bottom {
+  width: 100%;
+  padding: 0 32px;
+  text-align: center;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 8px;
+}
+.c-item .item-desc {
+  font-size: 15px;
+  opacity: 0.6;
+  line-height: 1.6;
+  font-weight: 500;
+}
+.c-item .item-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 8px;
+  padding: 10px 20px;
+  border-radius: 50px;
+  font-size: 14px;
+  font-weight: 600;
+  align-self: center;
+}
+
+/* 품목별 테마 */
+.c-i1 { background: #faf6f0; }
+.c-i1 .card-body { color: #4a3520; }
+.c-i1 .item-badge { background: rgba(74,53,32,0.08); color: #4a3520; }
+
+.c-i2 { background: #fff5ed; }
+.c-i2 .card-body { color: #7a3b10; }
+.c-i2 .item-badge { background: rgba(122,59,16,0.08); color: #7a3b10; }
+
+.c-i3 { background: #f0f8f0; }
+.c-i3 .card-body { color: var(--green-deep); }
+.c-i3 .item-badge { background: rgba(27,67,50,0.08); color: var(--green-deep); }
+
+.c-i4 { background: #fffdf0; }
+.c-i4 .card-body { color: #5c4a00; }
+.c-i4 .item-badge { background: rgba(92,74,0,0.08); color: #5c4a00; }
+
+.c-i5 { background: #f0f5ff; }
+.c-i5 .card-body { color: #0a3060; }
+.c-i5 .item-badge { background: rgba(10,48,96,0.08); color: #0a3060; }
+
+/* ══════════════════════════════════════
+   CARD 10 — 한눈에 보기
+   ══════════════════════════════════════ */
+.c-summary { background: var(--warm-deep); }
+.c-summary .card-body { color: #fff; gap: 0; justify-content: flex-start; padding-top: 56px; }
+.c-summary .tag { font-size: 13px; font-weight: 700; opacity: 0.4; letter-spacing: 3px; margin-bottom: 16px; }
+.c-summary h2 { font-size: 28px; font-weight: 800; margin-bottom: 28px; }
+.c-summary .tbl {
+  width: 100%;
+  border-radius: 20px;
+  overflow: hidden;
+  background: rgba(255,255,255,0.07);
+  border: 1px solid rgba(255,255,255,0.1);
+}
+.c-summary .tbl-row {
+  display: grid;
+  grid-template-columns: 44px 1fr;
+  align-items: center;
+  padding: 14px 20px;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  gap: 12px;
+}
+.c-summary .tbl-row:last-child { border-bottom: none; }
+.c-summary .tbl-emoji { font-size: 22px; text-align: center; }
+.c-summary .tbl-name { font-size: 16px; font-weight: 700; line-height: 1.3; }
+.c-summary .tbl-name small { display: block; font-size: 12px; font-weight: 500; opacity: 0.5; margin-top: 2px; }
+.c-summary .cond-box {
+  margin-top: 20px;
+  background: rgba(255,255,255,0.1);
+  border-radius: 16px;
+  padding: 20px;
+  text-align: center;
+}
+.c-summary .cond-box .cond-label {
+  font-size: 13px;
+  opacity: 0.6;
+  margin-bottom: 8px;
+}
+.c-summary .cond-box .cond-amount {
+  font-size: 36px;
+  font-weight: 900;
+}
+.c-summary .cond-box .cond-amount span {
+  font-size: 16px;
+  font-weight: 600;
+}
+.c-summary .note {
+  margin-top: 20px;
+  font-size: 13px;
+  opacity: 0.35;
+  line-height: 1.7;
+}
+
+/* ══════════════════════════════════════
+   CARD 11 — 마무리 CTA
+   ══════════════════════════════════════ */
+.c-end { background: linear-gradient(160deg, var(--green-main) 0%, var(--green-light) 100%); }
+.c-end .card-body { color: #fff; gap: 12px; }
+.c-end .emoji { font-size: 72px; margin-bottom: 16px; }
+.c-end h2 { font-size: 32px; font-weight: 800; line-height: 1.4; }
+.c-end .sub { font-size: 16px; opacity: 0.75; line-height: 1.7; margin-bottom: 24px; }
+.c-end .cta {
+  display: inline-block;
+  background: #fff;
+  color: var(--green-deep);
+  font-size: 18px;
+  font-weight: 800;
+  padding: 20px 52px;
+  border-radius: 60px;
+  text-decoration: none;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.15);
+  transition: transform 0.15s;
+  margin-bottom: 16px;
+}
+.c-end .cta:active { transform: scale(0.96); }
+.c-end .footer {
+  font-size: 12px;
+  opacity: 0.4;
+  line-height: 1.6;
+  margin-top: 8px;
+}
+
+@media (min-width: 431px) {
+  .page-indicator { right: calc(50% - 230px); }
+}
+</style>
+</head>
+<body>
+
+<!-- 세로 페이지 인디케이터 -->
+<div class="page-indicator" id="indicator"></div>
+
+<!-- ═══ 1. 커버 ═══ -->
+<section class="card c-cover" data-card="0">
+  <div class="card-body">
+    <div class="badge">서울남부두레생협</div>
+    <div class="icon-wrap">🤝</div>
+    <h1>퇴계점 조합원님께<br>드리는<br>특별한 선물</h1>
+    <p class="desc">매장은 문을 닫아도<br>우리의 인연은 계속됩니다</p>
+    <p class="period">2026. 3. 31(월) ~ 4. 25(금) · 4주간</p>
+    <div class="scroll-hint">
+      <svg viewBox="0 0 24 24"><path d="M12 5 L12 19 M6 13 L12 19 L18 13"/></svg>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ 2. 생협의 마음 (편지) ═══ -->
+<section class="card c-letter" data-card="1">
+  <div class="card-body">
+    <div class="tag">조합원님께</div>
+    <div class="letter-body">
+      <p>
+        퇴계점을 이용해 주셨던<br>
+        <span class="hl">조합원님, 감사합니다.</span><br><br>
+        매장 문은 닫히지만,<br>
+        <span class="hl">생산자와 조합원을 잇는<br>
+        두레의 끈</span>은 그대로입니다.<br><br>
+        온라인쇼핑몰에서도<br>
+        같은 생활재, 같은 마음으로<br>
+        조합원님의 밥상을 지키겠습니다.<br><br>
+        작은 감사의 마음을 담아<br>
+        <span class="hl">매주 5가지 선물</span>을 준비했어요.
+      </p>
+      <div class="sign">— 서울남부두레생협 임직원 일동</div>
+    </div>
+    <div class="scroll-hint-dark">
+      <svg viewBox="0 0 24 24"><path d="M12 5 L12 19 M6 13 L12 19 L18 13"/></svg>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ 3. 이벤트 안내 ═══ -->
+<section class="card c-info" data-card="2">
+  <div class="card-body">
+    <div class="tag">SPECIAL GIFT</div>
+    <h2>매주 1회<br>5가지 선물을<br>한꺼번에!</h2>
+    <div class="info-row">
+      <span class="info-icon">📅</span>
+      <div>
+        <div class="info-label">기간</div>
+        <div class="info-value">3/31(월) ~ 4/25(금)<br><em>4주간 매주 진행</em></div>
+      </div>
+    </div>
+    <div class="info-row">
+      <span class="info-icon">👥</span>
+      <div>
+        <div class="info-label">대상</div>
+        <div class="info-value">퇴계점 이용 조합원<br>(온라인쇼핑몰 주문 시)</div>
+      </div>
+    </div>
+    <div class="info-row">
+      <span class="info-icon">🎁</span>
+      <div>
+        <div class="info-label">증정</div>
+        <div class="info-value"><em>5품목 묶음</em> · 주 1회<br>배송 시 자동 동봉</div>
+      </div>
+    </div>
+    <div class="info-row">
+      <span class="info-icon">💰</span>
+      <div>
+        <div class="info-label">조건</div>
+        <div class="info-value"><em>10만원</em> 이상 주문 시</div>
+      </div>
+    </div>
+    <div class="scroll-hint-dark">
+      <svg viewBox="0 0 24 24"><path d="M12 5 L12 19 M6 13 L12 19 L18 13"/></svg>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ 4. 참여방법 ═══ -->
+<section class="card c-how" data-card="3">
+  <div class="card-body">
+    <div class="tag">HOW TO</div>
+    <h2>온라인 주문이<br>처음이셔도<br>괜찮아요</h2>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-text"><strong>온라인쇼핑몰</strong> 접속<br>ecoop.or.kr</div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-text">원하는 생활재 담고<br><strong>10만원 이상</strong> 주문</div>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-text"><strong>배송 박스에</strong><br>5가지 선물 자동 동봉!</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ 5. 품목 1 — 느타리버섯 ═══ -->
+<section class="card c-item c-i1" data-card="4">
+  <div class="card-body">
+    <div class="item-top">
+      <div class="item-num">GIFT 1 OF 5</div>
+      <div class="item-title">🍄 느타리버섯</div>
+      <div class="item-spec">200g</div>
+      <div class="item-img">
+        <img src="https://dureimg.ecoop.or.kr:9091/Delsys/DLOG/Goods/GoodsMaster/GoodsImage/50462C.png" alt="느타리버섯">
+      </div>
+    </div>
+    <div class="item-bottom">
+      <div class="item-desc">무농약 인증<br>우리 땅에서 키운 봄 버섯</div>
+      <div class="item-badge">생산자의 정성이 담긴 한 봉지</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ 6. 품목 2 — 당근 ═══ -->
+<section class="card c-item c-i2" data-card="5">
+  <div class="card-body">
+    <div class="item-top">
+      <div class="item-num">GIFT 2 OF 5</div>
+      <div class="item-title">🥕 당근</div>
+      <div class="item-spec">500g</div>
+      <div class="item-img">
+        <img src="https://dureimg.ecoop.or.kr:9091/Delsys/DLOG/Goods/GoodsMaster/GoodsImage/1325C.png" alt="당근">
+      </div>
+    </div>
+    <div class="item-bottom">
+      <div class="item-desc">무농약 인증<br>생산자가 직접 키운 알찬 봄 당근</div>
+      <div class="item-badge">얼굴을 아는 농부의 정직한 먹거리</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ 7. 품목 3 — 쑥버무리 ═══ -->
+<section class="card c-item c-i3" data-card="6">
+  <div class="card-body">
+    <div class="item-top">
+      <div class="item-num">GIFT 3 OF 5</div>
+      <div class="item-title">🌿 쑥버무리</div>
+      <div class="item-spec">250g</div>
+      <div class="item-img">
+        <img src="https://dureimg.ecoop.or.kr:9091/Delsys/DLOG/Goods/GoodsMaster/GoodsImage/54286C.jpg" alt="쑥버무리">
+      </div>
+    </div>
+    <div class="item-bottom">
+      <div class="item-desc">봄 향기 가득<br>온 가족 제철 간식</div>
+      <div class="item-badge">자연이 주는 봄의 선물</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ 8. 품목 4 — 원삼유정란 ═══ -->
+<section class="card c-item c-i4" data-card="7">
+  <div class="card-body">
+    <div class="item-top">
+      <div class="item-num">GIFT 4 OF 5</div>
+      <div class="item-title">🥚 원삼유정란</div>
+      <div class="item-spec">10구</div>
+      <div class="item-img">
+        <img src="https://dureimg.ecoop.or.kr:9091/Delsys/DLOG/Goods/GoodsMaster/GoodsImage/21492C.png" alt="원삼유정란">
+      </div>
+    </div>
+    <div class="item-bottom">
+      <div class="item-desc">자연방사 동물복지<br>건강한 닭이 낳은 건강한 알</div>
+      <div class="item-badge">생명을 존중하는 생협의 약속</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ 9. 품목 5 — 손질삼치 ═══ -->
+<section class="card c-item c-i5" data-card="8">
+  <div class="card-body">
+    <div class="item-top">
+      <div class="item-num">GIFT 5 OF 5</div>
+      <div class="item-title">🐟 냉장 손질삼치</div>
+      <div class="item-spec">300g</div>
+      <div class="item-img">
+        <img src="https://dureimg.ecoop.or.kr:9091/Delsys/DLOG/Goods/GoodsMaster/GoodsImage/54967C.jpg" alt="손질삼치">
+      </div>
+    </div>
+    <div class="item-bottom">
+      <div class="item-desc">손질 완료<br>주말 밥상을 풍성하게</div>
+      <div class="item-badge">바다와 식탁을 잇는 정직한 수산</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ 10. 한눈에 보기 ═══ -->
+<section class="card c-summary" data-card="9">
+  <div class="card-body">
+    <div class="tag">WEEKLY GIFT SET</div>
+    <h2>매주 받는 5가지 선물</h2>
+    <div class="tbl">
+      <div class="tbl-row">
+        <span class="tbl-emoji">🍄</span>
+        <div class="tbl-name">느타리버섯 200g<small>무농약 인증</small></div>
+      </div>
+      <div class="tbl-row">
+        <span class="tbl-emoji">🥕</span>
+        <div class="tbl-name">당근 500g<small>무농약 인증</small></div>
+      </div>
+      <div class="tbl-row">
+        <span class="tbl-emoji">🌿</span>
+        <div class="tbl-name">쑥버무리 250g<small>제철 간식</small></div>
+      </div>
+      <div class="tbl-row">
+        <span class="tbl-emoji">🥚</span>
+        <div class="tbl-name">원삼유정란 10구<small>동물복지 자연방사</small></div>
+      </div>
+      <div class="tbl-row">
+        <span class="tbl-emoji">🐟</span>
+        <div class="tbl-name">냉장 손질삼치 300g<small>손질 완료</small></div>
+      </div>
+    </div>
+    <div class="cond-box">
+      <div class="cond-label">주 1회 · 배송일 기준</div>
+      <div class="cond-amount">10<span>만원 이상 주문 시</span></div>
+    </div>
+    <p class="note">
+      * 퇴계점 이용 조합원 대상<br>
+      * 1인 주 1회 · 재고 소진 시 조기 종료<br>
+      * 3/31(월) ~ 4/25(금) · 4주간 진행
+    </p>
+  </div>
+</section>
+
+<!-- ═══ 11. 마무리 ═══ -->
+<section class="card c-end" data-card="10">
+  <div class="card-body">
+    <div class="emoji">🌱</div>
+    <h2>생산자와 조합원,<br>그 사이의 다리는<br>여전히 여기에</h2>
+    <p class="sub">
+      퇴계점에서 만나던 그 생활재,<br>
+      이제 온라인에서 집 앞까지<br>
+      안심하고 받아보세요
+    </p>
+    <a href="https://www.ecoop.or.kr/DureShop/shopMain.do" class="cta">온라인 장보기 →</a>
+    <p class="footer">
+      서울남부두레생협 온라인사업팀<br>
+      3/31(월) ~ 4/25(금) · 4주간 매주 증정
+    </p>
+  </div>
+</section>
+
+<script>
+(function() {
+  const cards = document.querySelectorAll('.card');
+  const indicator = document.getElementById('indicator');
+  const total = cards.length;
+
+  for (let i = 0; i < total; i++) {
+    const dot = document.createElement('div');
+    dot.className = 'page-dot' + (i === 0 ? ' active' : '');
+    dot.addEventListener('click', () => {
+      cards[i].scrollIntoView({ behavior: 'smooth' });
+    });
+    indicator.appendChild(dot);
+  }
+
+  const dots = indicator.querySelectorAll('.page-dot');
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const idx = Number(entry.target.dataset.card);
+        const lightCards = [1, 2, 4, 5, 6, 7, 8];
+        dots.forEach((d, i) => {
+          if (lightCards.includes(idx)) {
+            d.style.background = i === idx ? '#333' : 'rgba(0,0,0,0.15)';
+          } else {
+            d.style.background = i === idx ? '#fff' : 'rgba(255,255,255,0.25)';
+          }
+          d.className = 'page-dot' + (i === idx ? ' active' : '');
+        });
+      }
+    });
+  }, { threshold: 0.6 });
+
+  cards.forEach(card => observer.observe(card));
+
+  let currentCard = 0;
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowDown' || e.key === ' ') {
+      e.preventDefault();
+      currentCard = Math.min(currentCard + 1, total - 1);
+      cards[currentCard].scrollIntoView({ behavior: 'smooth' });
+    }
+    if (e.key === 'ArrowUp') {
+      e.preventDefault();
+      currentCard = Math.max(currentCard - 1, 0);
+      cards[currentCard].scrollIntoView({ behavior: 'smooth' });
+    }
+  });
+
+  const syncObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        currentCard = Number(entry.target.dataset.card);
+      }
+    });
+  }, { threshold: 0.6 });
+  cards.forEach(card => syncObserver.observe(card));
+})();
+</script>
+
+</body>
+</html>

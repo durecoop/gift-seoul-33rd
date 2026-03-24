@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>4주차(마지막) - 퇴계점 조합원 온라인 특별 증정 | 서울남부두레생협</title>
+<style>
+  @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:'Pretendard',-apple-system,sans-serif;background:#fff5f0;display:flex;justify-content:center;min-height:100vh;-webkit-font-smoothing:antialiased}
+  .wrap{width:100%;max-width:430px;margin:0 auto;background:#fff;min-height:100vh;overflow:hidden}
+
+  /* Hero */
+  .hero{background:linear-gradient(160deg,#bf360c 0%,#d84315 40%,#e64a19 100%);color:#fff;padding:48px 28px 36px;text-align:center;position:relative;overflow:hidden}
+  .hero::before{content:'';position:absolute;top:-60px;right:-60px;width:200px;height:200px;background:rgba(255,255,255,0.05);border-radius:50%}
+  .hero::after{content:'';position:absolute;bottom:-40px;left:-40px;width:160px;height:160px;background:rgba(255,255,255,0.04);border-radius:50%}
+  .badge{display:inline-block;background:rgba(255,255,255,0.15);backdrop-filter:blur(6px);border:1px solid rgba(255,255,255,0.2);border-radius:30px;padding:6px 16px;font-size:11px;font-weight:600;letter-spacing:1.5px;margin-bottom:20px}
+  .week-chip{display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,0.2);border-radius:20px;padding:8px 18px;font-size:13px;font-weight:700;margin-bottom:12px}
+  .hero-date{font-size:14px;opacity:0.75;margin-bottom:8px;font-weight:500}
+  .hero h1{font-size:26px;font-weight:800;line-height:1.4;margin-bottom:8px}
+  .hero-sub{font-size:14px;opacity:0.8;line-height:1.5}
+
+  /* Urgency Banner */
+  .urgency-banner{background:#fff3e0;padding:16px 24px;text-align:center;border-bottom:1px solid #ffe0b2}
+  .urgency-banner p{font-size:14px;font-weight:700;color:#e65100;line-height:1.5}
+  .urgency-banner .countdown{font-size:20px;font-weight:900;color:#bf360c;margin-top:4px}
+
+  /* Message */
+  .message-section{padding:28px 24px;background:#fff8f5}
+  .message-card{background:#fff;border-radius:20px;padding:28px 24px;box-shadow:0 2px 12px rgba(0,0,0,0.04);position:relative;border-top:4px solid #e64a19}
+  .message-card p{font-size:15px;color:#444;line-height:1.8;word-break:keep-all}
+  .message-card .hl{color:#bf360c;font-weight:700}
+  .message-card .sign{margin-top:16px;text-align:right;font-size:13px;color:#e64a19;font-weight:600}
+
+  /* Products Grid */
+  .products-section{padding:28px 24px}
+  .products-title{font-size:14px;font-weight:700;color:#e64a19;letter-spacing:2px;text-align:center;margin-bottom:20px}
+  .product-grid{display:flex;flex-direction:column;gap:16px}
+  .product-item{display:flex;align-items:center;gap:16px;background:#fff8f5;border-radius:16px;padding:16px}
+  .product-item .p-img{width:72px;height:72px;border-radius:12px;overflow:hidden;flex-shrink:0;background:#fbe9e7;box-shadow:0 2px 8px rgba(0,0,0,0.06)}
+  .product-item .p-img img{width:100%;height:100%;object-fit:cover}
+  .product-item .p-info{flex:1}
+  .product-item .p-name{font-size:16px;font-weight:800;color:#bf360c;margin-bottom:2px}
+  .product-item .p-spec{font-size:12px;color:#999;font-weight:500}
+  .product-item .p-desc{font-size:13px;color:#666;margin-top:4px;line-height:1.4}
+  .product-item .p-emoji{font-size:28px;flex-shrink:0}
+
+  /* Condition Box */
+  .condition-box{background:linear-gradient(135deg,#fbe9e7,#ffccbc);border-radius:20px;padding:24px;margin:0 24px 24px;text-align:center;border:1px solid #ffab91}
+  .condition-label{font-size:12px;color:#e64a19;font-weight:700;letter-spacing:2px;margin-bottom:8px}
+  .condition-amount{font-size:32px;font-weight:800;color:#bf360c}
+  .condition-amount span{font-size:16px;font-weight:600}
+  .condition-note{font-size:13px;color:#999;margin-top:8px;line-height:1.5}
+
+  /* Closing Message */
+  .closing-section{padding:0 24px 24px}
+  .closing-card{background:linear-gradient(135deg,#e8f5e9,#c8e6c9);border-radius:20px;padding:28px 24px;text-align:center;border:1px solid #a5d6a7}
+  .closing-icon{font-size:40px;margin-bottom:12px}
+  .closing-card h3{font-size:18px;font-weight:800;color:#1b4332;margin-bottom:8px;line-height:1.4}
+  .closing-card p{font-size:14px;color:#555;line-height:1.6}
+
+  /* CTA */
+  .cta-section{padding:0 24px 24px;text-align:center}
+  .cta-btn{display:block;background:#bf360c;color:#fff;font-size:17px;font-weight:800;padding:18px;border-radius:16px;text-decoration:none;box-shadow:0 4px 16px rgba(0,0,0,0.12);transition:transform 0.15s}
+  .cta-btn:active{transform:scale(0.97)}
+
+  /* Footer */
+  .footer{background:#fbe9e7;padding:28px 24px;text-align:center}
+  .footer-logo{font-size:14px;font-weight:800;color:#bf360c;margin-bottom:6px}
+  .footer-info{font-size:11px;color:#999;line-height:1.6}
+  .footer-period{display:inline-block;background:#bf360c;color:#fff;border-radius:20px;padding:6px 16px;font-size:11px;font-weight:600;margin-top:12px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="hero">
+    <div class="badge">퇴계점 조합원님께 드리는 선물</div>
+    <div class="week-chip">🔥 WEEK 4 · 마지막 주</div>
+    <div class="hero-date">2026년 4월 21일(월) ~ 4월 25일(금)</div>
+    <h1>마지막 주<br>봄 선물을<br>놓치지 마세요</h1>
+    <p class="hero-sub">4주간의 특별 증정, 이번이 마지막입니다</p>
+  </div>
+
+  <div class="urgency-banner">
+    <p>특별 증정 마지막 주!</p>
+    <div class="countdown">4/25(금)까지</div>
+  </div>
+
+  <div class="message-section">
+    <div class="message-card">
+      <p>
+        4주간 온라인쇼핑몰을<br>
+        이용해 주신 조합원님,<br>
+        <span class="hl">진심으로 감사합니다.</span><br><br>
+        이번 주가 특별 증정의<br>
+        <span class="hl">마지막 기회</span>입니다.<br><br>
+        하지만 증정이 끝나도<br>
+        <span class="hl">두레의 약속은 계속</span>됩니다.<br>
+        온라인에서 언제든 반갑게 맞이하겠습니다.
+      </p>
+      <div class="sign">— 서울남부두레생협 임직원 일동</div>
+    </div>
+  </div>
+
+  <div class="products-section">
+    <div class="products-title">마지막 주 증정 5품목</div>
+    <div class="product-grid">
+      <div class="product-item">
+        <div class="p-img"><img src="https://dureimg.ecoop.or.kr:9091/Delsys/DLOG/Goods/GoodsMaster/GoodsImage/50462C.png" alt="느타리버섯"></div>
+        <div class="p-info">
+          <div class="p-name">느타리버섯</div>
+          <div class="p-spec">200g · 무농약 인증</div>
+          <div class="p-desc">우리 땅에서 키운 봄 버섯</div>
+        </div>
+        <div class="p-emoji">🍄</div>
+      </div>
+      <div class="product-item">
+        <div class="p-img"><img src="https://dureimg.ecoop.or.kr:9091/Delsys/DLOG/Goods/GoodsMaster/GoodsImage/1325C.png" alt="당근"></div>
+        <div class="p-info">
+          <div class="p-name">당근</div>
+          <div class="p-spec">500g · 무농약 인증</div>
+          <div class="p-desc">생산자가 직접 키운 알찬 봄 당근</div>
+        </div>
+        <div class="p-emoji">🥕</div>
+      </div>
+      <div class="product-item">
+        <div class="p-img"><img src="https://dureimg.ecoop.or.kr:9091/Delsys/DLOG/Goods/GoodsMaster/GoodsImage/54286C.jpg" alt="쑥버무리"></div>
+        <div class="p-info">
+          <div class="p-name">쑥버무리</div>
+          <div class="p-spec">250g · 제철 간식</div>
+          <div class="p-desc">봄 향기 가득, 온 가족 간식</div>
+        </div>
+        <div class="p-emoji">🌿</div>
+      </div>
+      <div class="product-item">
+        <div class="p-img"><img src="https://dureimg.ecoop.or.kr:9091/Delsys/DLOG/Goods/GoodsMaster/GoodsImage/21492C.png" alt="원삼유정란"></div>
+        <div class="p-info">
+          <div class="p-name">원삼유정란</div>
+          <div class="p-spec">10구 · 동물복지 자연방사</div>
+          <div class="p-desc">건강한 닭이 낳은 건강한 알</div>
+        </div>
+        <div class="p-emoji">🥚</div>
+      </div>
+      <div class="product-item">
+        <div class="p-img"><img src="https://dureimg.ecoop.or.kr:9091/Delsys/DLOG/Goods/GoodsMaster/GoodsImage/54967C.jpg" alt="손질삼치"></div>
+        <div class="p-info">
+          <div class="p-name">냉장 손질삼치</div>
+          <div class="p-spec">300g · 손질 완료</div>
+          <div class="p-desc">주말 밥상을 풍성하게</div>
+        </div>
+        <div class="p-emoji">🐟</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="condition-box">
+    <div class="condition-label">마지막 주 증정 조건</div>
+    <div class="condition-amount">10<span>만원 이상 주문</span></div>
+    <p class="condition-note">배송일 기준 · 1인 주 1회 · 5품목 자동 동봉</p>
+  </div>
+
+  <div class="closing-section">
+    <div class="closing-card">
+      <div class="closing-icon">🌱</div>
+      <h3>증정이 끝나도<br>두레의 약속은 계속됩니다</h3>
+      <p>생산자와 조합원이 서로 얼굴을 아는 관계,<br>온라인에서도 그 신뢰는 변하지 않습니다.<br>앞으로도 편하게 온라인 장보기를 이용해 주세요.</p>
+    </div>
+  </div>
+
+  <div class="cta-section">
+    <a href="https://www.ecoop.or.kr/DureShop/shopMain.do" class="cta-btn">마지막 선물 받으러 가기 →</a>
+  </div>
+
+  <div class="footer">
+    <div class="footer-logo">서울남부두레생협</div>
+    <p class="footer-info">사람과 자연이 함께 사는 세상<br>온라인사업팀</p>
+    <span class="footer-period">4주차(마지막) · 4/21(월) ~ 4/25(금)</span>
+  </div>
+</div>
+</body>
+</html>
