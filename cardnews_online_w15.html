@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>봄맞이 증정 2차 · 당근 500g | 서울남부두레생협</title>
+<style>
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
+
+:root {
+  --spring-deep: #2e6b3e;
+  --spring-main: #4a9e5c;
+  --spring-light: #7dc88e;
+  --spring-pale: #eef8f0;
+  --carrot: #e8713a;
+  --carrot-deep: #c45a24;
+  --carrot-pale: #fff4ed;
+  --warm-bg: #faf9f5;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html {
+  scroll-snap-type: y mandatory;
+  overflow-y: scroll;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+}
+
+body {
+  font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, sans-serif;
+  background: #000;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+.card {
+  width: 100%;
+  height: 100vh;
+  height: 100dvh;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.card-body {
+  width: 100%;
+  max-width: 430px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0 32px;
+  text-align: center;
+  position: relative;
+}
+
+.page-indicator {
+  position: fixed;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  z-index: 100;
+}
+
+.page-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.25);
+  transition: all 0.3s;
+  cursor: pointer;
+}
+
+.page-dot.active {
+  height: 20px;
+  border-radius: 3px;
+  background: #fff;
+}
+
+.scroll-hint {
+  position: absolute;
+  bottom: 28px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: rgba(255,255,255,0.4);
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 2px;
+  animation: bounce 2s ease-in-out infinite;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.scroll-hint svg {
+  width: 20px; height: 20px;
+  fill: none; stroke: rgba(255,255,255,0.4); stroke-width: 2; stroke-linecap: round;
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateX(-50%) translateY(0); opacity: 0.4; }
+  50% { transform: translateX(-50%) translateY(8px); opacity: 0.8; }
+}
+
+.scroll-hint-dark {
+  position: absolute;
+  bottom: 28px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: rgba(0,0,0,0.2);
+  font-size: 13px;
+  animation: bounce-dark 2s ease-in-out infinite;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+.scroll-hint-dark svg {
+  width: 20px; height: 20px;
+  fill: none; stroke: rgba(0,0,0,0.2); stroke-width: 2; stroke-linecap: round;
+}
+@keyframes bounce-dark {
+  0%,100% { transform: translateX(-50%) translateY(0); opacity: 0.3; }
+  50% { transform: translateX(-50%) translateY(8px); opacity: 0.6; }
+}
+
+/* ═══ CARD 1 — 커버 ═══ */
+.c-cover { background: linear-gradient(160deg, #1b5e20 0%, var(--spring-main) 50%, var(--spring-light) 100%); }
+.c-cover .card-body { color: #fff; gap: 8px; }
+.c-cover .badge {
+  background: rgba(255,255,255,0.15);
+  border: 1px solid rgba(255,255,255,0.25);
+  border-radius: 40px;
+  padding: 10px 24px;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  margin-bottom: 12px;
+}
+.c-cover .season-tag {
+  background: rgba(255,255,255,0.2);
+  border-radius: 20px;
+  padding: 6px 18px;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  margin-bottom: 8px;
+}
+.c-cover .icon-wrap { font-size: 64px; margin-bottom: 12px; }
+.c-cover h1 { font-size: 34px; font-weight: 800; line-height: 1.4; margin-bottom: 12px; }
+.c-cover .desc { font-size: 18px; font-weight: 500; opacity: 0.85; line-height: 1.6; margin-bottom: 8px; }
+.c-cover .period { font-size: 15px; font-weight: 600; opacity: 0.5; }
+
+/* ═══ CARD 2 — 봄 인사 ═══ */
+.c-spring { background: var(--spring-pale); }
+.c-spring .card-body { color: var(--spring-deep); gap: 0; }
+.c-spring .tag { font-size: 13px; font-weight: 700; color: var(--spring-main); letter-spacing: 3px; margin-bottom: 28px; }
+.c-spring .letter-body {
+  width: 100%;
+  background: #fff;
+  border-radius: 24px;
+  padding: 36px 28px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.04);
+  text-align: left;
+  position: relative;
+}
+.c-spring .letter-body::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--spring-main), var(--spring-light));
+  border-radius: 24px 24px 0 0;
+}
+.c-spring .letter-body p { font-size: 17px; line-height: 1.9; color: #444; word-break: keep-all; }
+.c-spring .letter-body .hl { color: var(--spring-deep); font-weight: 700; }
+.c-spring .letter-body .sign { margin-top: 24px; text-align: right; font-size: 14px; font-weight: 600; color: var(--spring-main); }
+
+/* ═══ CARD 3 — 이번 주 선물 ═══ */
+.c-gift { background: var(--carrot-pale); }
+.c-gift .card-body {
+  justify-content: flex-start;
+  padding: 0;
+  gap: 0;
+  color: #5a2d0c;
+}
+.c-gift .gift-top {
+  width: 100%;
+  padding: 48px 32px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+.c-gift .gift-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--carrot);
+  color: #fff;
+  border-radius: 20px;
+  padding: 8px 20px;
+  font-size: 14px;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+.c-gift .gift-week { font-size: 15px; font-weight: 700; opacity: 0.6; margin-bottom: 8px; }
+.c-gift .gift-title { font-size: 38px; font-weight: 900; line-height: 1.2; margin-bottom: 4px; }
+.c-gift .gift-spec { font-size: 16px; font-weight: 600; opacity: 0.5; margin-bottom: 16px; }
+.c-gift .gift-img {
+  width: calc(100% - 48px);
+  max-width: 280px;
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: 0 12px 40px rgba(0,0,0,0.08);
+  margin-bottom: 20px;
+}
+.c-gift .gift-img img { width: 100%; height: auto; display: block; }
+.c-gift .gift-bottom {
+  width: 100%;
+  padding: 0 32px;
+  text-align: center;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 10px;
+}
+.c-gift .gift-desc { font-size: 16px; opacity: 0.65; line-height: 1.7; font-weight: 500; }
+.c-gift .condition-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 8px;
+  padding: 14px 28px;
+  border-radius: 50px;
+  font-size: 18px;
+  font-weight: 700;
+  background: var(--carrot-deep);
+  color: #fff;
+  align-self: center;
+}
+.c-gift .condition-pill .amt { font-size: 26px; font-weight: 900; }
+
+/* ═══ CARD 4 — 참여 방법 ═══ */
+.c-how { background: var(--spring-deep); }
+.c-how .card-body { color: #fff; gap: 0; }
+.c-how .tag { font-size: 13px; font-weight: 700; opacity: 0.5; letter-spacing: 3px; margin-bottom: 20px; }
+.c-how h2 { font-size: 30px; font-weight: 800; line-height: 1.4; margin-bottom: 40px; }
+.c-how .steps { display: flex; flex-direction: column; gap: 24px; width: 100%; }
+.c-how .step { display: flex; align-items: center; gap: 20px; text-align: left; }
+.c-how .step-num {
+  width: 52px; height: 52px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.1);
+  border: 2px solid rgba(255,255,255,0.2);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 20px; font-weight: 800;
+  flex-shrink: 0;
+}
+.c-how .step-text { font-size: 19px; font-weight: 600; line-height: 1.5; }
+.c-how .step-text strong { font-size: 21px; font-weight: 800; }
+.c-how .phone-box {
+  margin-top: 32px;
+  background: rgba(255,255,255,0.1);
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 16px;
+  padding: 20px;
+  width: 100%;
+  text-align: center;
+}
+.c-how .phone-box .phone-label { font-size: 14px; opacity: 0.7; margin-bottom: 8px; }
+.c-how .phone-box .phone-num { font-size: 28px; font-weight: 900; letter-spacing: 1px; }
+.c-how .phone-box .phone-sub { font-size: 13px; opacity: 0.5; margin-top: 6px; }
+
+/* ═══ CARD 5 — 마무리 CTA ═══ */
+.c-end { background: linear-gradient(160deg, var(--spring-main) 0%, var(--spring-light) 100%); }
+.c-end .card-body { color: #fff; gap: 10px; }
+.c-end .emoji { font-size: 64px; margin-bottom: 12px; }
+.c-end h2 { font-size: 30px; font-weight: 800; line-height: 1.4; }
+.c-end .sub { font-size: 16px; opacity: 0.75; line-height: 1.7; margin-bottom: 16px; }
+.c-end .cta {
+  display: inline-block;
+  background: #fff;
+  color: var(--spring-deep);
+  font-size: 18px;
+  font-weight: 800;
+  padding: 20px 48px;
+  border-radius: 60px;
+  text-decoration: none;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.15);
+  transition: transform 0.15s;
+  margin-bottom: 12px;
+}
+.c-end .cta:active { transform: scale(0.96); }
+.c-end .phone-info {
+  background: rgba(255,255,255,0.15);
+  border: 1px solid rgba(255,255,255,0.25);
+  border-radius: 16px;
+  padding: 16px 24px;
+  margin-top: 4px;
+}
+.c-end .phone-info .ph-label { font-size: 14px; opacity: 0.8; margin-bottom: 4px; }
+.c-end .phone-info .ph-num { font-size: 24px; font-weight: 900; }
+.c-end .footer { font-size: 12px; opacity: 0.4; line-height: 1.6; margin-top: 8px; }
+
+@media (min-width: 431px) {
+  .page-indicator { right: calc(50% - 230px); }
+}
+</style>
+</head>
+<body>
+
+<div class="page-indicator" id="indicator"></div>
+
+<!-- ═══ 1. 커버 ═══ -->
+<section class="card c-cover" data-card="0">
+  <div class="card-body">
+    <div class="badge">서울남부두레생협</div>
+    <div class="season-tag">봄맞이 증정 2차</div>
+    <div class="icon-wrap">🌿</div>
+    <h1>두레생협 온라인에<br>봄이 왔어요!</h1>
+    <p class="desc">이번 주 주문하시면<br>무농약 당근 500g 증정</p>
+    <p class="period">15주차 · 4/6(월) ~ 4/10(금)</p>
+    <div class="scroll-hint">
+      <svg viewBox="0 0 24 24"><path d="M12 5 L12 19 M6 13 L12 19 L18 13"/></svg>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ 2. 봄 인사 ═══ -->
+<section class="card c-spring" data-card="1">
+  <div class="card-body">
+    <div class="tag">봄 인사</div>
+    <div class="letter-body">
+      <p>
+        조합원님, 안녕하세요.<br><br>
+        따뜻한 봄바람과 함께<br>
+        <span class="hl">두레생협 온라인쇼핑몰</span>에도<br>
+        봄이 찾아왔습니다.<br><br>
+        이번 주 <span class="hl">5만원 이상</span> 주문하시면<br>
+        우리 땅에서 자란<br>
+        <span class="hl">무농약 당근 500g</span>을<br>
+        선물로 함께 보내드려요.<br><br>
+        봄 기운 가득한 밥상,<br>
+        두레가 함께합니다.
+      </p>
+      <div class="sign">— 서울남부두레생협 🌱</div>
+    </div>
+    <div class="scroll-hint-dark">
+      <svg viewBox="0 0 24 24"><path d="M12 5 L12 19 M6 13 L12 19 L18 13"/></svg>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ 3. 이번 주 선물 — 당근 ═══ -->
+<section class="card c-gift" data-card="2">
+  <div class="card-body">
+    <div class="gift-top">
+      <div class="gift-badge">봄맞이 증정 2차</div>
+      <div class="gift-week">15주차 · 4/6(월) ~ 4/10(금)</div>
+      <div class="gift-title">🥕 당근</div>
+      <div class="gift-spec">500g · 무농약</div>
+      <div class="gift-img">
+        <img src="https://dureimg.ecoop.or.kr:9091/Delsys/DLOG/Goods/GoodsMaster/GoodsImage/1325C.png" alt="당근 500g">
+      </div>
+    </div>
+    <div class="gift-bottom">
+      <div class="gift-desc">얼굴을 아는 농부가 키운<br>알차고 단단한 봄 당근<br>무농약 인증 · 우리 땅에서 자란 제철 당근</div>
+      <div class="condition-pill"><span class="amt">5</span>만원 이상 주문 시</div>
+    </div>
+    <div class="scroll-hint-dark">
+      <svg viewBox="0 0 24 24"><path d="M12 5 L12 19 M6 13 L12 19 L18 13"/></svg>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ 4. 참여 방법 ═══ -->
+<section class="card c-how" data-card="3">
+  <div class="card-body">
+    <div class="tag">HOW TO</div>
+    <h2>이렇게<br>받으실 수 있어요</h2>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-text"><strong>두레생협 쇼핑몰</strong>에서<br>원하시는 생활재 담기</div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-text"><strong>5만원 이상</strong> 주문하기</div>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-text">배송 박스에<br><strong>무농약 당근 500g</strong> 자동 동봉!</div>
+      </div>
+    </div>
+    <div class="phone-box">
+      <div class="phone-label">온라인 주문이 어려우시면</div>
+      <div class="phone-num">📞 1661-5110</div>
+      <div class="phone-sub">두레생협 상담실에서 도와드립니다</div>
+    </div>
+    <div class="scroll-hint">
+      <svg viewBox="0 0 24 24"><path d="M12 5 L12 19 M6 13 L12 19 L18 13"/></svg>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ 5. 마무리 CTA ═══ -->
+<section class="card c-end" data-card="4">
+  <div class="card-body">
+    <div class="emoji">🥕</div>
+    <h2>봄이 온 밥상,<br>당근과 함께<br>시작하세요</h2>
+    <p class="sub">
+      4/6(월) ~ 4/10(금)<br>
+      5만원 이상 주문 시 무농약 당근 증정
+    </p>
+    <a href="https://www.ecoop.or.kr/DureShop/shopMain.do" class="cta">두레생협 쇼핑몰 →</a>
+    <div class="phone-info">
+      <div class="ph-label">주문이 어려우시면 전화주세요</div>
+      <div class="ph-num">📞 1661-5110</div>
+    </div>
+    <p class="footer">
+      서울남부두레생협 온라인사업팀<br>
+      봄맞이 증정 2차 · 15주차
+    </p>
+  </div>
+</section>
+
+<script>
+(function() {
+  const cards = document.querySelectorAll('.card');
+  const indicator = document.getElementById('indicator');
+  const total = cards.length;
+
+  for (let i = 0; i < total; i++) {
+    const dot = document.createElement('div');
+    dot.className = 'page-dot' + (i === 0 ? ' active' : '');
+    dot.addEventListener('click', () => {
+      cards[i].scrollIntoView({ behavior: 'smooth' });
+    });
+    indicator.appendChild(dot);
+  }
+
+  const dots = indicator.querySelectorAll('.page-dot');
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const idx = Number(entry.target.dataset.card);
+        const lightCards = [1, 2];
+        dots.forEach((d, i) => {
+          if (lightCards.includes(idx)) {
+            d.style.background = i === idx ? '#333' : 'rgba(0,0,0,0.15)';
+          } else {
+            d.style.background = i === idx ? '#fff' : 'rgba(255,255,255,0.25)';
+          }
+          d.className = 'page-dot' + (i === idx ? ' active' : '');
+        });
+      }
+    });
+  }, { threshold: 0.6 });
+
+  cards.forEach(card => observer.observe(card));
+
+  let currentCard = 0;
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowDown' || e.key === ' ') {
+      e.preventDefault();
+      currentCard = Math.min(currentCard + 1, total - 1);
+      cards[currentCard].scrollIntoView({ behavior: 'smooth' });
+    }
+    if (e.key === 'ArrowUp') {
+      e.preventDefault();
+      currentCard = Math.max(currentCard - 1, 0);
+      cards[currentCard].scrollIntoView({ behavior: 'smooth' });
+    }
+  });
+
+  const syncObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        currentCard = Number(entry.target.dataset.card);
+      }
+    });
+  }, { threshold: 0.6 });
+  cards.forEach(card => syncObserver.observe(card));
+})();
+</script>
+
+</body>
+</html>
