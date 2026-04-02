@@ -158,6 +158,22 @@ body {
   font-weight: 500;
   opacity: 0.6;
 }
+.c-cover .online-tag {
+  margin-top: 16px;
+  display: inline-block;
+  background: rgba(255,255,255,0.15);
+  border: 1px solid rgba(255,255,255,0.3);
+  border-radius: 12px;
+  padding: 10px 24px;
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(255,255,255,0.2); }
+  50% { box-shadow: 0 0 20px 4px rgba(255,255,255,0.25); }
+}
 
 /* ══════════════════════════════════════
    CARD 2 — 이벤트 안내
@@ -459,6 +475,7 @@ body {
     <div class="num-sub">주년 기념</div>
     <h1>감사 증정<br>기획전</h1>
     <p class="period">2026. 4. 6(월) ~ 4. 10(금)</p>
+    <div class="online-tag">온라인쇼핑몰 전용 이벤트</div>
     <div class="scroll-hint">
       <svg viewBox="0 0 24 24"><path d="M12 5 L12 19 M6 13 L12 19 L18 13"/></svg>
     </div>
@@ -481,7 +498,7 @@ body {
       <span class="info-icon">👥</span>
       <div>
         <div class="info-label">대상</div>
-        <div class="info-value">서울남부 온라인<br>주문 조합원 전체</div>
+        <div class="info-value">서울남부 조합원 전체<br><em>온라인쇼핑몰 주문에만 적용</em></div>
       </div>
     </div>
     <div class="info-row">
