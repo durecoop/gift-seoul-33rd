@@ -241,6 +241,36 @@ body {
 .c-how .step-text strong { font-size: 22px; font-weight: 800; }
 
 /* ══════════════════════════════════════
+   CARD 3.5 — 전 요일 공통 프로모션
+   ══════════════════════════════════════ */
+.c-bonus { background: linear-gradient(160deg, #3a1c71 0%, #d76d77 50%, #ffaf7b 100%); }
+.c-bonus .card-body { color: #fff; gap: 0; justify-content: center; }
+.c-bonus .tag { font-size: 13px; font-weight: 700; opacity: 0.6; letter-spacing: 3px; margin-bottom: 20px; }
+.c-bonus h2 { font-size: 32px; font-weight: 800; line-height: 1.4; margin-bottom: 32px; }
+.c-bonus .bonus-img {
+  width: 180px; height: 180px;
+  border-radius: 50%;
+  overflow: hidden;
+  box-shadow: 0 12px 40px rgba(0,0,0,0.25);
+  margin-bottom: 28px;
+  background: rgba(255,255,255,0.1);
+}
+.c-bonus .bonus-img img { width: 100%; height: 100%; object-fit: cover; }
+.c-bonus .bonus-name { font-size: 28px; font-weight: 800; margin-bottom: 8px; }
+.c-bonus .bonus-sub { font-size: 15px; opacity: 0.7; line-height: 1.5; margin-bottom: 20px; }
+.c-bonus .bonus-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 32px;
+  border-radius: 50px;
+  background: rgba(255,255,255,0.2);
+  border: 1px solid rgba(255,255,255,0.3);
+  font-size: 18px;
+  font-weight: 700;
+}
+
+/* ══════════════════════════════════════
    CARD 4~8 — 요일별 (공통)
    ══════════════════════════════════════ */
 .c-day .card-body {
@@ -489,8 +519,22 @@ body {
   </div>
 </section>
 
+<!-- ═══ 3.5 전 요일 공통 프로모션 ═══ -->
+<section class="card c-bonus" data-card="3">
+  <div class="card-body">
+    <div class="tag">BONUS</div>
+    <h2>전 요일 공통<br>추가 증정!</h2>
+    <div class="bonus-img">
+      <img src="https://dureimg.ecoop.or.kr:9091/Delsys/DLOG/Goods/GoodsMaster/GoodsImage/57232C.png" alt="귀리유">
+    </div>
+    <div class="bonus-name">🥛 귀리유 1팩</div>
+    <div class="bonus-sub">국산 유기농 통귀리 발효<br>고소하고 부드러운 식물성 음료</div>
+    <div class="bonus-pill">매일 주문 시 함께 동봉</div>
+  </div>
+</section>
+
 <!-- ═══ 4. 월요일 ═══ -->
-<section class="card c-day c-mon" data-card="3">
+<section class="card c-day c-mon" data-card="4">
   <div class="card-body">
     <div class="day-top">
       <div class="day-chip">DAY 1 · 배송일</div>
@@ -509,7 +553,7 @@ body {
 </section>
 
 <!-- ═══ 5. 화요일 ═══ -->
-<section class="card c-day c-tue" data-card="4">
+<section class="card c-day c-tue" data-card="5">
   <div class="card-body">
     <div class="day-top">
       <div class="day-chip">DAY 2 · 배송일</div>
@@ -528,7 +572,7 @@ body {
 </section>
 
 <!-- ═══ 6. 수요일 ═══ -->
-<section class="card c-day c-wed" data-card="5">
+<section class="card c-day c-wed" data-card="6">
   <div class="card-body">
     <div class="day-top">
       <div class="day-chip">DAY 3 · 배송일</div>
@@ -547,7 +591,7 @@ body {
 </section>
 
 <!-- ═══ 7. 목요일 ═══ -->
-<section class="card c-day c-thu" data-card="6">
+<section class="card c-day c-thu" data-card="7">
   <div class="card-body">
     <div class="day-top">
       <div class="day-chip">DAY 4 · 배송일</div>
@@ -566,7 +610,7 @@ body {
 </section>
 
 <!-- ═══ 8. 금요일 ═══ -->
-<section class="card c-day c-fri" data-card="7">
+<section class="card c-day c-fri" data-card="8">
   <div class="card-body">
     <div class="day-top">
       <div class="day-chip">DAY 5 · 마지막 배송일</div>
@@ -585,7 +629,7 @@ body {
 </section>
 
 <!-- ═══ 9. 한눈에 보기 ═══ -->
-<section class="card c-summary" data-card="8">
+<section class="card c-summary" data-card="9">
   <div class="card-body">
     <div class="tag">SUMMARY</div>
     <h2>한눈에 보기</h2>
@@ -615,16 +659,22 @@ body {
         <div class="tbl-name">손질 오징어<small>금 · 4/10</small></div>
         <span class="tbl-cond">7만원~</span>
       </div>
+      <div class="tbl-row" style="background: rgba(255,255,255,0.05);">
+        <span class="tbl-emoji">🥛</span>
+        <div class="tbl-name">귀리유 1팩<small>전 요일 공통</small></div>
+        <span class="tbl-cond" style="color: #ffaf7b;">공통</span>
+      </div>
     </div>
     <p class="note">
       * 주문일이 아닌 배송일 기준 적용<br>
-      * 1인 1일 1회 · 재고 소진 시 조기 종료
+      * 1인 1일 1회 · 재고 소진 시 조기 종료<br>
+      * 귀리유는 요일별 증정품과 함께 동봉
     </p>
   </div>
 </section>
 
 <!-- ═══ 10. 마무리 ═══ -->
-<section class="card c-end" data-card="9">
+<section class="card c-end" data-card="10">
   <div class="card-body">
     <div class="emoji">🌱</div>
     <h2>봄과 함께<br>감사를<br>전합니다</h2>
@@ -668,7 +718,7 @@ body {
         });
 
         // 밝은 배경 카드에서는 인디케이터 색 변경
-        const lightCards = [1, 3, 4, 5, 6, 7]; // c-info, 요일 카드들
+        const lightCards = [1, 4, 5, 6, 7, 8]; // c-info, 요일 카드들
         if (lightCards.includes(idx)) {
           indicator.style.setProperty('--dot-color', 'rgba(0,0,0,0.15)');
           dots.forEach((d, i) => {
