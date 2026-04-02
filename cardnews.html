@@ -455,8 +455,8 @@ body {
 <section class="card c-cover" data-card="0">
   <div class="card-body">
     <div class="badge">서울남부두레생협</div>
-    <div class="num">33</div>
-    <div class="num-sub">주년 총회기념</div>
+    <div class="num" id="counterNum">0</div>
+    <div class="num-sub">주년 기념</div>
     <h1>감사 증정<br>기획전</h1>
     <p class="period">2026. 4. 6(월) ~ 4. 10(금)</p>
     <div class="scroll-hint">
@@ -759,6 +759,40 @@ body {
     });
   }, { threshold: 0.6 });
   cards.forEach(card => syncObserver.observe(card));
+
+  // 33 카운트업 애니메이션
+  const counterEl = document.getElementById('counterNum');
+  let counted = false;
+
+  function animateCounter() {
+    if (counted) return;
+    counted = true;
+    const target = 33;
+    const duration = 1500;
+    const start = performance.now();
+
+    function update(now) {
+      const elapsed = now - start;
+      const progress = Math.min(elapsed / duration, 1);
+      const ease = 1 - Math.pow(1 - progress, 3);
+      counterEl.textContent = Math.round(target * ease);
+      if (progress < 1) {
+        requestAnimationFrame(update);
+      } else {
+        counterEl.textContent = target;
+      }
+    }
+    requestAnimationFrame(update);
+  }
+
+  const coverObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        animateCounter();
+      }
+    });
+  }, { threshold: 0.5 });
+  coverObserver.observe(document.querySelector('.c-cover'));
 })();
 </script>
 
